@@ -1,0 +1,360 @@
+/* Custom css */
+.mx-w-440{
+    max-width: 340px;
+}
+.m-t-0 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.title-blue {
+    color: #0A48B3;
+}
+
+/* Card reservation comptoir */
+.custom_card
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+}
+@media screen and (max-width: 768px)
+{
+    .custom_card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 375px)
+{
+    .custom_card {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+        width: 100%;
+    }
+}
+
+.cards{
+    border:solid black;
+}
+/* loader spinner pour la requete ajax */
+.lds-dual-ring.hidden {
+  display: none;
+}
+.hidden {
+  display: none;
+}
+/*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,.8);
+  z-index: 999;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+/*Spinner Styles*/
+.lds-dual-ring {
+  display: inline-block;
+  /*width: 80px;
+  height: 80px;*/
+  width: 100%;
+  height: 100%;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 5% auto;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+/* FIN spinner */
+
+/* FORM DYNAMIQUE AJOUT RESERVATION */
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+  }
+
+  #msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 0 5%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+  }
+
+  /*Hide all except first fieldset*/
+  #msform fieldset:not(:first-of-type) {
+    display: none;
+  }
+
+  /*inputs*/
+  #msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+  }
+
+  #msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid#0A48B3;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+  }
+
+  /*buttons*/
+  #msform .action-button {
+    width: 100px;
+    background:#0A48B3;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+  }
+
+  #msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px#0A48B3;
+  }
+
+  #msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+  }
+
+  #msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #b6b6f1;
+  }
+
+  /*headings*/
+  .fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  .fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  /*progressbar*/
+  #progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+  }
+
+  #progressbar li {
+    list-style-type: none;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 20%;
+    float: left;
+    position: relative;
+  }
+
+  #progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+  }
+
+  /*progressbar connectors*/
+  #progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+  }
+
+  #progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+  }
+
+  /*marking active/completed steps green*/
+  /*The number of the step and the connector before it = green*/
+  #progressbar li.active:before, #progressbar li.active:after {
+    background:#0A48B3;
+    color: white;
+  }
+
+
+  /* Not relevant to this form */
+  .dme_link {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .dme_link a {
+    background: #FFF;
+    font-weight: bold;
+    color: #0A48B3;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 5px 25px;
+    font-size: 12px;
+  }
+
+  .dme_link a:hover, .dme_link a:focus {
+    background: #C5C5F1;
+    text-decoration: none;
+  }
+  .float-right {
+    float: right !important;
+  }
+
+  /* Reservation form */
+
+  #nav_step{
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 100%;
+    /*margin: 0 5%;*/
+    position: relative;
+  }
+  .veh {
+    padding-top: 30px;
+    text-align: center;
+  }
+  .qty {
+      width: 90px;
+      height: 60px;
+      border-radius: 10px;
+      border: 1px solid #eeeeee;
+      padding: 0 20px;
+      padding-right: 0px;
+      color: #999999;
+  }
+
+  .quantity {
+      position: relative;
+      width: 90px;
+      display: inline-block;
+  }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+
+  input[type=number] {
+      -moz-appearance: textfield;
+  }
+  .quantity input:focus {
+      outline: 0;
+  }
+
+  .quantity-nav {
+      float: right;
+      position: absolute;
+      height: 60px;
+      top: 0px;
+      left: 90px;
+  }
+
+  .quantity-button {
+      position: relative;
+      cursor: pointer;
+      border-left: 1px solid #eeeeee;
+      width: 30px;
+      text-align: center;
+      color: #FF933C;
+      font-size: 13px;
+      line-height: 30px;
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+  }
+
+  .quantity-button.quantity-up {
+      position: absolute;
+      height: 50%;
+      top: 0;
+      border-bottom: 1px solid #eeeeee;
+  }
+
+  .quantity-button.quantity-down {
+      position: absolute;
+      bottom: 0px;
+      height: 50%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .stepwizard-step p {
+       font-size: 0.6em;
+    }
+  }

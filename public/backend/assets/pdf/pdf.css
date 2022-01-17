@@ -1,0 +1,222 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.main{
+    /* max-width: 1024px; */
+    max-width: 765px;
+    margin: 0 auto;
+    padding: 40px 40px;
+}
+#tab1, #tab2, #tab3{
+    border-width: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+    table-layout: auto;
+   /* width: 100px;
+    */
+    width: 100%;
+}
+#tab3{
+    margin-top:2px;
+}
+/* #tab3 th{
+    width: 50%;
+}
+*/
+.td-right{
+    text-align: right;
+}
+/* .tab3-td-width{
+    width: 1%;
+}
+*/
+thead{
+    color:white;
+    background-color: #000;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+td{
+    font-size: 12px;
+    border: 1px solid #ccc;
+    padding: 5px!important;
+    font-weight: 600;
+}
+.td-gris{
+    background-color: #e6e6e6;
+}
+.td-noborder{
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+th{
+    font-weight: 500;
+    padding: 5px 0;
+}
+.address{
+    font-size: 12px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.left, .right{
+    width: 45%;
+}
+.right{
+    display: flex;
+    float:right;
+    align-items: center;
+}
+.header__bloc{
+    text-align: center;
+    height: min-content;
+}
+.header__bloc:first-child{
+    margin-right: 10px;
+}
+.bloc__title{
+    padding: 5px 20px;
+    border-bottom: 2px solid #000;
+}
+.header__bloc p{
+    padding: 15px 0;
+}
+.address span{
+    display: block;
+    font-weight: 600;
+}
+.utils-title{
+    text-transform: uppercase;
+    margin-left: 30%;
+}
+.utils-paragraphe{
+    font-size: 16px;
+    font-weight: 600;
+    color: #53d9fc;
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.inner-center-top{
+    display: block;
+    justify-content: space-around;
+}
+.inner-center-bottom{
+    display: block;
+    justify-content: space-around;
+    align-items: baseline;
+}
+.img-car-top{
+    width: 40%;
+}
+.img-car-bottom{
+    width: 25%;
+    height: 50%;
+}
+.img-car-bottom-middle{
+    width: 15%;
+}
+.inner-bloc{
+    display: flex;
+}
+.inner-left{
+    width: 25%;
+    float:left;
+    border-right: 2px solid #ccc;
+}
+.inner-center{
+    width: 75%;
+    /*margin: 10px:*/
+}
+.inner-right{
+    width: 25%;
+    float:right;
+    border-left: 2px solid #ccc;
+}
+.inner-text{
+    height: 120px;
+}
+.state{
+    padding:0 ;
+}
+.inner-observation, .inner-carburant{
+    background-color: #ccc;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0;
+}
+.inner-tab{
+    border-spacing: 0;
+    width:100%;
+}
+.inner-tab td{
+    width: 3em;
+    border: 0;
+    text-align: center;
+}
+.inner-tab td:not(:first-child){
+    border-left: 2px solid #e6e6e6;
+}
+.fraction{
+    width: 25%;
+    text-align: center;
+}
+.fraction:not(:first-child){
+    border-left: 1px solid #e6e6e6;
+}
+.etn-formulaire{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+p.small{
+    font-size: 11px;
+}
+p.text{
+    text-align: justify;
+    font-size: 14px;
+}
+.inner-date{
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.locat-fix{
+    display: flex;
+    justify-content: space-around;
+}
+#tab2, #tab3 td{
+    padding: 2px;
+    font-size: 12px;
+}
+.td-recu{
+    padding: 5px 5px 0 5px !important;
+}
+.signature{
+    display: flex;
+    justify-content: space-around;
+    height: 100px;
+}
+.td-payment{
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+p.bottom{
+    margin-left: 50%;
+    font-size: 11.25px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.locat-fix-paragraphe-l{
+  text-align: left;
+}
+.locat-fix-paragraphe-r{
+  text-align: right;
+}
