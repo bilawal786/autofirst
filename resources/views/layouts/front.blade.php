@@ -79,7 +79,7 @@
                 <div class="col-lg-6 col-md-7">
                     <div class="rightside full-height">
                         <ul class="custom-flex full-height">
-                            <li class="book-appointment"> <a href="#"> Réserver maintenant </a> </li>
+                            <li class="book-appointment"> <a href="#booking"> Réserver maintenant </a> </li>
                         </ul>
                     </div>
                 </div>
@@ -96,9 +96,9 @@
                             <div class="main-menu">
                                 <ul class="custom-flex">
                                     <li class="menu-item active"> <a href="{{route('front.index')}}">Accueil</a> </li>
-                                    <li class="menu-item"> <a href="#">Nos voitures</a> </li>
-                                    <li class="menu-item"> <a href="#">À propos de nous</a> </li>
-                                    <li class="menu-item"> <a href="#">Contact </a> </li>
+                                    <li class="menu-item"> <a href="#carsdiv">Nos voitures</a> </li>
+                                    <li class="menu-item"> <a href="#about">À propos de nous</a> </li>
+                                    <li class="menu-item"> <a href="{{route('front.contact')}}">Contact </a> </li>
                                 </ul>
                             </div>
                             <div class="hamburger-menu">

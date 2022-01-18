@@ -8,6 +8,7 @@ use App\Http\Resources\SeasonResource;
 use App\Option;
 use App\Reservation;
 use App\Season;
+use App\Vehicle;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
@@ -15,10 +16,14 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index(){
-        return view('front.index');
+        $vehicles = Vehicle::latest()->where('status', 1)->get();
+        return view('front.index', compact('vehicles'));
     }
     public function success(){
         return view('front.success');
+    }
+    public function contact(){
+        return view('front.contact');
     }
     public function findCar(Request $request){
         $depart = Carbon::parse($request->departure_date)->format('Y-m-d');

@@ -48,7 +48,7 @@
 </div>
 <!-- End Slider -->
 <!-- Start Banner tabs -->
-<div class="banner-tabs">
+<div class="banner-tabs" id="booking">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -207,7 +207,7 @@
 </div>
 <!-- End Banner tabs -->
 <!-- Start About Us -->
-<section class="section-padding about-us">
+<section class="section-padding about-us" id="about">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-6 pl-2 pr-2 align-self-center text-left">
@@ -240,84 +240,32 @@
 <!-- End About Us -->
 
 <!-- Recommended Cars -->
-<section class="section-padding car-booking">
+<section class="section-padding car-booking" id="carsdiv">
     <div class="container">
         <div class="section-header text-center">
             <div class="section-heading">
-                <h3 class="text-custom-black">Recommended Cars</h3>
+                <h3 class="text-custom-black">Voitures recommandées</h3>
                 <div class="section-description">
-                    <p class="text-light-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                    <p class="text-light-dark">Voitures recommandées toujours disponibles pour vous</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="car-slider arrow-layout-2 row">
+                    @foreach($vehicles as $vehicle)
                     <div class="slide-item col-12">
                         <div class="car-grid">
                             <div class="car-grid-wrapper car-grid bx-wrapper">
-                                <div class="image-sec animate-img"> <a href="car-detail.html"> <img src="assets/images/cars/1.png" class="full-width" alt="img"> </a> </div>
+                                <div class="image-sec animate-img"> <a href="#"> <img src="{{asset($vehicle->image)}}" class="full-width" alt="img"> </a> </div>
                                 <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="car-detail.html" class="text-custom-black">Economy<small class="text-light-dark">Per day</small></a></h4>
+                                    <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$vehicle->marque->name??'Supreme'}} {{$vehicle->modal->name??'Supreme'}}<small class="text-light-dark">Par jour</small></a></h4>
                                     <span class="price"><small>From</small>$20</span>
-                                    <p>Grate explorer of tha truth tha master-bulder of human happines.</p>
-                                    <div class="action"> <a class="btn-second btn-small" href="car-detail.html">View</a> <a class="btn-first btn-submit yellow" href="booking.html">Book</a> </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="slide-item col-12">
-                        <div class="car-grid">
-                            <div class="car-grid-wrapper car-grid bx-wrapper">
-                                <div class="image-sec animate-img"> <a href="car-detail.html"> <img src="assets/images/cars/2.png" class="full-width" alt="img"> </a> </div>
-                                <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="car-detail.html" class="text-custom-black">Deluxe<small class="text-light-dark">Per day</small></a></h4>
-                                    <span class="price"><small>From</small>$35</span>
-                                    <p>Grate explorer of tha truth tha master-bulder of human happines.</p>
-                                    <div class="action"> <a class="btn-second btn-small" href="car-detail.html">View</a> <a class="btn-first btn-submit yellow" href="booking.html">Book</a> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide-item col-12">
-                        <div class="car-grid">
-                            <div class="car-grid-wrapper car-grid bx-wrapper">
-                                <div class="image-sec animate-img"> <a href="car-detail.html"> <img src="assets/images/cars/3.png" class="full-width" alt="img"> </a> </div>
-                                <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="car-detail.html" class="text-custom-black">Patinum<small class="text-light-dark">Per day</small></a></h4>
-                                    <span class="price"><small>From</small>$50</span>
-                                    <p>Grate explorer of tha truth tha master-bulder of human happines.</p>
-                                    <div class="action"> <a class="btn-second btn-small" href="car-detail.html">View</a> <a class="btn-first btn-submit yellow" href="booking.html">Book</a> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide-item col-12">
-                        <div class="car-grid">
-                            <div class="car-grid-wrapper car-grid bx-wrapper">
-                                <div class="image-sec animate-img"> <a href="car-detail.html"> <img src="assets/images/cars/4.png" class="full-width" alt="img"> </a> </div>
-                                <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="car-detail.html" class="text-custom-black">Delux<small class="text-light-dark">Per day</small></a></h4>
-                                    <span class="price"><small>From</small>$68</span>
-                                    <p>Grate explorer of tha truth tha master-bulder of human happines.</p>
-                                    <div class="action"> <a class="btn-second btn-small" href="car-detail.html">View</a> <a class="btn-first btn-submit yellow" href="booking.html">Book</a> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide-item col-12">
-                        <div class="car-grid">
-                            <div class="car-grid-wrapper car-grid bx-wrapper">
-                                <div class="image-sec animate-img"> <a href="car-detail.html"> <img src="assets/images/cars/5.png" class="full-width" alt="img"> </a> </div>
-                                <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="car-detail.html" class="text-custom-black">Economy<small class="text-light-dark">Per day</small></a></h4>
-                                    <span class="price"><small>From</small>$58</span>
-                                    <p>Grate explorer of tha truth tha master-bulder of human happines.</p>
-                                    <div class="action"> <a class="btn-second btn-small" href="car-detail.html">View</a> <a class="btn-first btn-submit yellow" href="booking.html">Book</a> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
