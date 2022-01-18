@@ -40,7 +40,7 @@
                                             {{$reservation->fname??''}} {{$reservation->lname??''}}
                                         </td>
                                         <td>
-                                            {{$reservation->vehicle->marque->name??'Supreme'}} {{$reservation->vehicle->modal->name??'Supreme'}}
+                                            {{$reservation->vehicle->marque->name??'Supreme'}} {{$reservation->vehicle->modal->name??'Supreme'}} ({{$reservation->vehicle->registration??'Supreme'}})
                                         </td>
                                         <td>
                                             {{\Carbon\Carbon::parse($reservation->departure_date)->format('d/m/Y')}} - {{$reservation->departure_time}}<br>

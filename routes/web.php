@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Front\FrontendController@index')->name('front.index');
+Route::post('/find/car', 'Front\FrontendController@findCar')->name('front.find.car');
+Route::post('/booking/submit', 'Front\FrontendController@booking')->name('booking.submit');
+Route::get('/payment/success', 'Front\FrontendController@success')->name('payment.success');
 
 Auth::routes();
 
