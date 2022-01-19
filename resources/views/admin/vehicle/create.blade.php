@@ -70,7 +70,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label">Image</label>
-                                        <input type="file" class="form-control" name="image" id="color" autocomplete="false" required="">
+                                        <input type="file" class="form-control" name="image" id="color" required="">
                                     </div>
                                 </div>
 <!--                                <div class="col-lg-6">
