@@ -56,6 +56,11 @@ Route::prefix('admin')->group(function () {
          Route::post('/season/update/{id}', 'Admin\SeasonController@update')->name('season.update');
          Route::get('/season/delete/{id}', 'Admin\SeasonController@delete')->name('season.delete');
 
+         Route::get('/category', 'Admin\CategoryController@index')->name('admin.category');
+         Route::post('/category/store', 'Admin\CategoryController@store')->name('category.store');
+         Route::post('/category/update/{id}', 'Admin\CategoryController@update')->name('category.update');
+         Route::get('/category/delete/{id}', 'Admin\CategoryController@delete')->name('category.delete');
+
          Route::get('/direct/reservation', 'Admin\ReservationController@direct')->name('direct.reservation');
          Route::get('/reservations', 'Admin\ReservationController@reservations')->name('admin.reservations');
          Route::get('/delete/reservation/{id}', 'Admin\ReservationController@reservationsDelete')->name('delete.reservation');

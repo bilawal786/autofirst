@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Marque;
 use App\Modal;
@@ -16,7 +17,8 @@ class VehicleController extends Controller
     }
     public function create(){
         $marques = Marque::all();
-        return view('admin.vehicle.create', compact('marques'));
+        $categories = Category::latest()->get();
+        return view('admin.vehicle.create', compact('marques', 'categories'));
     }
     public function fetchmodals(Request $request){
         $modal = Modal::where('marque_id', $request->id)->get();
