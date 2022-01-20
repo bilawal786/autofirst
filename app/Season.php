@@ -8,8 +8,8 @@ class Season extends Model
 {
 //    protected $dates = ['start_date', 'end_date'];
 
-    public function vehicle()
+    public function category()
     {
-        return $this->belongsTo('App\Vehicle', 'vehicle_id');
+        return $this->belongsTo('App\Category', 'category_id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Category;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeasonResource;
@@ -38,8 +39,9 @@ class FrontendController extends Controller
         $days = $interval->format('%a');
         $options = Option::latest()->where('status', 1)->get();
         $gurantees = Gurantee::latest()->where('status', 1)->get();
-        $seasons =  Season::where('start_date', '<', $depart)->where('end_date', '>', $retour)->get();
-        return  view('front.findCar', compact('seasons', 'depart', 'retour', 'start_time', 'end_time', 'options', 'gurantees', 'start_point', 'end_point', 'days'));
+        $seasons =  Season::where('start_date', '<', $depart)->where('end_date', '>', $retour)->pluck('category_id');
+        $cats = Category::whereIn('id', $seasons)->get();
+        return  view('front.findCar', compact('cats', 'depart', 'retour', 'start_time', 'end_time', 'options', 'gurantees', 'start_point', 'end_point', 'days'));
     }
     public function booking(Request $request){
 //        dd($request->all());

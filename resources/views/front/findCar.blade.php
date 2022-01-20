@@ -18,20 +18,25 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach($seasons as $row)
-                                <div class="col-md-6 col-xs-12 col-sm-12">
+                            @foreach($cats as $cat)
+                                @foreach($cat->vehicles as $row)
+                                    <div class="col-md-6 col-xs-12 col-sm-12">
                                     <div class="row">
+                                        @php
+                                            $check = \App\SeasonCategory::where('category_id', $row->categorie->id)->first();
+                                            $season = \App\Season::find($check->season_id);
+                                        @endphp
                                         <div class="col-12">
                                             <div class="car-grid">
                                                 <div class="car-grid-wrapper car-grid bx-wrapper">
                                                     <div class="image-sec animate-img">
-                                                        <label style="width: 100%; height: 100%" for="abc{{$row->id}}"> <img style="width: 100%" src="{{asset($row->vehicle->image)}}" class="full-width" alt="img"> </label>
+                                                        <label style="width: 100%; height: 100%" for="abc{{$row->id}}"> <img style="width: 100%" src="{{asset($row->image)}}" class="full-width" alt="img"> </label>
                                                     </div>
                                                     <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                                        <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$row->vehicle->marque->name??'Not available'}} {{$row->vehicle->modal->name??'Not available'}} ({{$row->vehicle->registration??'Not available'}})<small class="text-light-dark">Par jour</small></a></h4>
-                                                        <span class="price">{{$row->price}} €</span>
-                                                        <p><input name="vehicle_price" onclick="carselect(this)" id="abc{{$row->id}}" value="{{$row->price}}" type="radio" class="form-control"></p>
-                                                        <input type="hidden" name="vehicle_id" value="{{$row->vehicle->id}}">
+                                                        <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$row->marque->name??'Not available'}} {{$row->modal->name??'Not available'}} ({{$row->registration??'Not available'}})<small class="text-light-dark">Par jour</small></a></h4>
+                                                        <span class="price">{{$season->price}} €</span>
+                                                        <p><input name="vehicle_price" onclick="carselect(this)" id="abc{{$row->id}}" value="{{$season->price}}" type="radio" class="form-control"></p>
+                                                        <input type="hidden" name="vehicle_id" value="{{$row->id}}">
                                                         <div class="action">
                                                             <label style="width: 100%; height: 100%" for="abc{{$row->id}}">
                                                                 <a style="width: 100%" class="btn-first btn-submit yellow" >Sélectionnez ce véhicule</a>
@@ -43,6 +48,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             @endforeach
                         </div>
                         <input type="hidden" name="start_point" value="{{$start_point}}">

@@ -29,10 +29,10 @@
                                         <div class="modal-body">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="name" class="col-form-label">VÉHICULE</label>
-                                                    <select name="vehicle_id" required class="form-control" id="">
-                                                        @foreach($vehicles as $mar)
-                                                            <option value="{{$mar->id}}">{{$mar->registration}}</option>
+                                                    <label for="name" class="col-form-label">VÉHICULE CATÉGORIE</label>
+                                                    <select name="category_id" required class="form-control" id="">
+                                                        @foreach($categories as $mar)
+                                                            <option value="{{$mar->id}}">{{$mar->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -75,7 +75,7 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">VÉHICULE</th>
+                                    <th scope="col">CATÉGORIE</th>
                                     <th scope="col">SAISON NOM</th>
                                     <th scope="col">DATE DE DÉBUT</th>
                                     <th scope="col">DATE DE FIN</th>
@@ -87,7 +87,7 @@
                                 @foreach($seasons as $row)
                                     <tr>
                                         <td>{{$row->id}}</td>
-                                        <td>{{$row->vehicle->registration??'Supreme'}}</td>
+                                        <td>{{$row->category->name??'Supreme'}}</td>
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->start_date}}</td>
                                         <td>{{$row->end_date}}</td>
@@ -116,8 +116,8 @@
                                                                     <div class="form-group col-md-12">
                                                                         <label for="marque_id" class="col-form-label">Véhicule</label>
                                                                         <select name="vehicle_id" id="vehicle_id" class="form-control">
-                                                                            @foreach($vehicles as $marq)
-                                                                                <option value="{{$marq->id}}" @if($marq->id == $row->vehicle_id) selected @endif>{{$marq->registration}}</option>
+                                                                            @foreach($categories as $marq)
+                                                                                <option value="{{$marq->id}}" @if($marq->id == $row->category_id) selected @endif>{{$marq->name}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>

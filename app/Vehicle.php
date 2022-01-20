@@ -14,4 +14,8 @@ class Vehicle extends Model
     {
         return $this->belongsTo('App\Modal', 'modal_id');
     }
+    public function categorie()
+    {
+        return $this->belongsTo('App\Category', 'category');
+    }
 }

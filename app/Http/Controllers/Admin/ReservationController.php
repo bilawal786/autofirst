@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeasonResource;
@@ -26,8 +27,9 @@ class ReservationController extends Controller
     public function json(Request $request){
         $depart = $request->date_depart;
         $retour = $request->date_retour;
-        $season =  Season::where('start_date', '<', $depart)->where('end_date', '>', $retour)->get();
-        $json = SeasonResource::collection($season);
+        $season =  Season::where('start_date', '<', $depart)->where('end_date', '>', $retour)->pluck('category_id');
+        $cat = Category::whereIn('id', $season)->get();
+        $json = SeasonResource::collection($cat);
         return response()->json($json);
     }
     public function store(Request $request){

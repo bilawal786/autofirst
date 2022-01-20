@@ -23,6 +23,7 @@
                                     <th scope="col">Immatriculation</th>
                                     <th scope="col">Marque</th>
                                     <th scope="col">Modèle</th>
+                                    <th scope="col">Catégorie</th>
                                     <th scope="col">État</th>
                                     <th scope="col" class="text-center">Action</th>
                                 </tr>
@@ -41,6 +42,9 @@
                                         </td>
                                         <td>
                                             {{$vehicule->modal->name??'Supprimé'}}
+                                        </td>
+                                        <td>
+                                            {{$vehicule->categorie->name??'Supprimé'}}
                                         </td>
                                         <td>
                                             @if($vehicule->status == '2')

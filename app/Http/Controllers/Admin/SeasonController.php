@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Season;
+use App\SeasonCategory;
 use App\Vehicle;
 use Illuminate\Http\Request;
 
@@ -11,18 +13,23 @@ class SeasonController extends Controller
 {
     public function index(){
         $seasons = Season::latest()->get();
-        $vehicles = Vehicle::all();
-        return view('admin.season.index', compact('seasons', 'vehicles'));
+        $categories = Category::all();
+        return view('admin.season.index', compact('seasons', 'categories'));
     }
     public function store(Request $request){
         $season = new Season();
-        $season->vehicle_id = $request->vehicle_id;
+        $season->category_id = $request->category_id;
         $season->name = $request->name;
         $season->start_date = $request->start_date;
         $season->end_date = $request->end_date;
         $season->price = $request->price;
         $season->save();
-//        Vehicle::find($request->vehicle_id)->update(['rate_per_day' => $request->price]);
+
+        $season_category = new SeasonCategory();
+        $season_category->season_id = $season->id;
+        $season_category->category_id = $request->category_id;
+        $season_category->save();
+
         $notification = array(
             'messege' => 'Ajouté avec succès!',
             'alert-type' => 'success'
@@ -31,13 +38,12 @@ class SeasonController extends Controller
     }
     public function update(Request $request, $id){
         $season = Season::find($id);
-        $season->vehicle_id = $request->vehicle_id;
+        $season->category_id = $request->category_id;
         $season->name = $request->name;
         $season->start_date = $request->start_date;
         $season->end_date = $request->end_date;
         $season->price = $request->price;
         $season->update();
-//        Vehicle::find($request->vehicle_id)->update(['rate_per_day' => $request->price]);
         $notification = array(
             'messege' => 'Ajouté avec succès!',
             'alert-type' => 'success'
