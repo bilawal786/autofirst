@@ -57,6 +57,7 @@ Route::prefix('admin')->group(function () {
          Route::get('/season/delete/{id}', 'Admin\SeasonController@delete')->name('season.delete');
 
          Route::get('/category', 'Admin\CategoryController@index')->name('admin.category');
+         Route::get('/category/vehicles/{id}', 'Admin\CategoryController@vehicles')->name('category.vehicles');
          Route::post('/category/store', 'Admin\CategoryController@store')->name('category.store');
          Route::post('/category/update/{id}', 'Admin\CategoryController@update')->name('category.update');
          Route::get('/category/delete/{id}', 'Admin\CategoryController@delete')->name('category.delete');
@@ -68,6 +69,9 @@ Route::prefix('admin')->group(function () {
          Route::get('/admin/calender', 'Admin\ReservationController@calender')->name('admin.calender');
          Route::post('/reservation/store', 'Admin\ReservationController@store')->name('reservation.store');
          Route::get('/json', 'Admin\ReservationController@json')->name('json');
+
+         Route::get('/settings', 'Admin\ContentController@index')->name('settings.index');
+         Route::post('/settings/store', 'Admin\ContentController@store')->name('content.store');
     });
 
 });

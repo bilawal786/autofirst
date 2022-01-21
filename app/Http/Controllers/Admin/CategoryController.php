@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Vehicle;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -40,5 +41,9 @@ class CategoryController extends Controller
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
+    }
+    public function vehicles($id){
+        $vehicles = Vehicle::where('category', $id)->get();
+        return view('admin.vehicle.index', compact('vehicles'));
     }
 }

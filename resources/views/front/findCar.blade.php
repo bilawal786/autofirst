@@ -514,7 +514,7 @@
                                                     <div class="form-group">
                                                         <label>Informations complémentaire</label>
                                                         <div class="input-group">
-                                                            <textarea placeholder="Notes about your order, e.g. special notes for car." class="form-control" id="details" name="details"></textarea>
+                                                            <textarea class="form-control" id="details" name="details"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

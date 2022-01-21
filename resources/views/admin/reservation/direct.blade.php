@@ -236,7 +236,7 @@
                                                 <li id="priceOp" style="list-style-type:none;display:none"></li>
                                                 <li style="list-style-type:none; display:none">Total : <span id="totalOption" style="font-weight:bold"></span>
                                                 </li>
-                                                <input type="hidden" id="totalamount" name="totalamount" value="">
+{{--                                                <input type="hidden" id="totalamount" name="totalamount" value="">--}}
                                                 <input type="hidden" id="priceOp">
                                                 <input type="hidden" name="option_id" id="idFinal">
                                                 <input type="hidden" name="prixFinal" id="prixFinal">
@@ -689,7 +689,7 @@
                                         <div class="form-group">
                                             <label>Numero de vol </label>
                                             <div class="input-group">
-                                                <input type="text" placeholder="ex. TX542" class="form-control" name="num_vol">
+                                                <input type="text" placeholder="ex. TX542" class="form-control" name="flight_no">
                                             </div>
                                         </div>
                                     </div>
@@ -725,7 +725,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-form-label">Montant</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control" name="prix_sur_place" id="prix_sur_place" required>
+                                                        <input type="number" class="form-control" id="totalamount" name="totalamount" required>
                                                     </div>
                                                 </div>
                                             </div>

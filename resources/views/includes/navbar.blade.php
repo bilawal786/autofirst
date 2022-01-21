@@ -93,6 +93,12 @@
                            class="nav-link {{ (request()->is('*admin/season')) ? 'active' : '' }}"><i
                                 class="far text-primary fa-money-bill-alt"></i><span class="nav-link-text">Saisons des Tarifs</span></a>
                     </li>
+                    <li class="nav-small-cap">Réglages</li>
+                    <li class="nav-item">
+                        <a href="{{route('settings.index')}}"
+                           class="nav-link {{ (request()->is('*admin/settings')) ? 'active' : '' }}"><i
+                                class="far text-primary fa-bars"></i><span class="nav-link-text">Paramètres du site Web</span></a>
+                    </li>
                 </ul>
             </div>
         </div>

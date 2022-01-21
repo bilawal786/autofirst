@@ -119,6 +119,27 @@ class GeneralSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
         ]);
+
+        \App\Content::create([
+            'logo' => 'local/logo.png',
+            'facebook' => 'www.facebook.com',
+            'instagram' => 'www.instagram.com',
+            'image1' => 'assets/images/car-1.jpg',
+            'image2' => 'assets/images/car-1.jpg',
+            'image3' => 'assets/images/about.jpg',
+            'h1' => 'Subaru Impreza',
+            'h2' => '125',
+            'h3' => '',
+            'd1' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
+            'd2' => '',
+            'd3' => '',
+            'footer' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet...',
+            'phone' => '1-567-124-44227',
+            'email' => 'info@autofirstlocation.com',
+            'address' => '182 main street pert habour 8007',
+        ]);
     }
 
 }

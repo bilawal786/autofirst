@@ -48,6 +48,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">CATÉGORIE NOM</th>
+                                    <th scope="col">TOTAL VÉHICULES</th>
                                     <th scope="col" class="text-center">ACTION</th>
                                 </tr>
                                 </thead>
@@ -56,7 +57,11 @@
                                     <tr>
                                         <td>{{$row->id}}</td>
                                         <td>{{$row->name}}</td>
+                                        <td>{{$row->vehicles->count()}}</td>
                                         <td>
+                                            <a href="{{route('category.vehicles', ['id' => $row->id])}}">
+                                                <button type="button" class="btn btn-success btn-sm m-1"><i class="fas fa-eye" aria-hidden="true"></i></button>
+                                            </a>
                                             <button type="button" data-toggle="modal" data-target="#modele{{$row->id}}" class="btn btn-info btn-sm m-1"><i class="fas fa-edit" aria-hidden="true"></i></button>
                                             <div class="modal fade" id="modele{{$row->id}}">
                                                 <div class="modal-dialog" role="document">

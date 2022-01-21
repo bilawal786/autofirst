@@ -36,7 +36,7 @@
 
     <!-- CSS for IE -->
     <!--[if lte IE 9]>
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}css/ie.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/ie.css')}}" />
     <![endif]-->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -45,6 +45,27 @@
     <![endif]-->
     <!-- place -->
     <style>
+        .header .topbar {
+            background: #fc802a;
+        }
+        .btn-submit {
+            border-color: #fc802a;
+            color: #fc802a;
+            background: #fff;
+        }
+        .about-us h3 {
+            color: #fc802a;
+        }
+        .copyright {
+            background-color: #fc802a;
+            text-align: center;
+            padding-top: 20px;
+        }
+        #back-top a {
+            border: #fc802a solid 1px;
+            color: #ffffff;
+            background: #fc802a;
+        }
         .btn-small:hover, .btn-submit:hover {
             color: #fefefe !important;
         }
@@ -58,6 +79,9 @@
             width: 100%;
             background-color: #000;
             opacity: 0;
+        }
+        @media screen and (min-width: 480px) {
+
         }
     </style>
 </head>
@@ -153,7 +177,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p class="text-custom-white">© Copyrights - 2022 | <a href="https://ikaedigital.com/">Ikae Digital</a>.</p>
+                <p class="text-custom-white">© Copyrights - 2022 | <a href="https://spenceragency.fr/">Spencer agency</a>.</p>
             </div>
         </div>
     </div>

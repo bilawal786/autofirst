@@ -47,6 +47,7 @@ class CreateReservationsTable extends Migration
             $table->string('payment_method')->nullable();
             $table->longText('address')->nullable();
             $table->longText('details')->nullable();
+            $table->longText('flight_no')->nullable();
             $table->string('totalamount')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

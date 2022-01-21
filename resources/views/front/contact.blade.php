@@ -22,17 +22,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" name="#" class="form-control form-control-custom" placeholder="Email I'd" required="">
+                                    <input type="email" name="#" class="form-control form-control-custom" placeholder="E-mail" required="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="#" class="form-control form-control-custom" placeholder="Sujette" required="">
+                                    <input type="text" name="#" class="form-control form-control-custom" placeholder="Sujet" required="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="#" class="form-control form-control-custom" placeholder="Téléphone." required="">
+                                    <input type="text" name="#" class="form-control form-control-custom" placeholder="Téléphone" required="">
                                 </div>
                             </div>
                             <div class="col-md-12">

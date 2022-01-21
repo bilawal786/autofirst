@@ -10,14 +10,6 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-content">
-<!--                                <h1 class="text-custom-white">Upto 25% off on first booking <span class="text-custom-blue">Car</span> through your app!</h1>
-                                <ul class="custom">
-                                    <li class="text-custom-white"> <i class="fas fa-dollar-sign"></i> Best Price Guaranteed </li>
-                                    <li class="text-custom-white"> <i class="fas fa-car"></i> Home Pickups </li>
-                                    <li class="text-custom-white"> <i class="fas fa-laptop"></i> Easy Bookings </li>
-                                    <li class="text-custom-white"> <i class="fas fa-headphones-alt"></i> 24/7 Customer Care </li>
-                                </ul>
-                                <a href="cars.html" class="btn-first btn-small">Find Out More</a> -->
                             </div>
                         </div>
                     </div>
@@ -30,14 +22,6 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="slider-content">
-<!--                                <h1 class="text-custom-white">Upto 25% off on first booking <span class="text-custom-blue">Car</span> through your app!</h1>
-                                <ul class="custom">
-                                    <li class="text-custom-white"> <i class="fas fa-dollar-sign"></i> Best Price Guaranteed </li>
-                                    <li class="text-custom-white"> <i class="fas fa-car"></i> Home Pickups </li>
-                                    <li class="text-custom-white"> <i class="fas fa-laptop"></i> Easy Bookings </li>
-                                    <li class="text-custom-white"> <i class="fas fa-headphones-alt"></i> 24/7 Customer Care </li>
-                                </ul>
-                                <a href="cars.html" class="btn-first btn-small">Find Out More</a> -->
                             </div>
                         </div>
                     </div>
@@ -206,38 +190,6 @@
     </div>
 </div>
 <!-- End Banner tabs -->
-<!-- Start About Us -->
-<section class="section-padding about-us" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-7 col-lg-6 pl-2 pr-2 align-self-center text-left">
-                <div class="about-left-side mb-md-80">
-                    <div class="section-header style-left">
-                        <div class="section-heading">
-                            <h3 class="text-custom-black">Subaru Impreza</h3>
-                            <div class="section-description">
-                                <div class="car-price"> <strong>$125</strong> <span>/Day</span> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum has been the industry's standard dummy text.
-                        Lorem Ipsum is simply dummy.</p>
-                    <a href="about.html" class="btn-first btn-submit">Reserve Now</a> </div>
-            </div>
-            <div class="col-xl-5 col-lg-6">
-                <div class="about-right-side full-height">
-                    <div class="about-img full-height">
-                        <img src="assets/images/about.jpg" class="img-fluid image-fit" alt="img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End About Us -->
 
 <!-- Recommended Cars -->
 <section class="section-padding car-booking" id="carsdiv">
@@ -259,8 +211,8 @@
                             <div class="car-grid-wrapper car-grid bx-wrapper">
                                 <div class="image-sec animate-img"> <a href="#"> <img src="{{asset($vehicle->image)}}" class="full-width" alt="img"> </a> </div>
                                 <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$vehicle->marque->name??'Supreme'}} {{$vehicle->modal->name??'Supreme'}}<small class="text-light-dark">Par jour</small></a></h4>
-                                    <span class="price"><small>From</small>$20</span>
+                                    <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$vehicle->marque->name??'Supreme'}} {{$vehicle->modal->name??'Supreme'}} ({{$vehicle->registration??'Supreme'}})<small class="text-light-dark">Par jour</small></a></h4>
+                                    <span class="price"><small>From</small>20 €</span>
                                 </div>
                             </div>
                         </div>
@@ -272,4 +224,37 @@
     </div>
 </section>
 <!-- End Car -->
+
+<!-- Start About Us -->
+<section class="section-padding about-us" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-6 pl-2 pr-2 align-self-center text-left">
+                <div class="about-left-side mb-md-80">
+                    <div class="section-header style-left">
+                        <div class="section-heading">
+                            <h3 class="text-custom-black">Subaru Impreza</h3>
+                            <div class="section-description">
+                                <div class="car-price"> <strong>125 €</strong> <span>/Day</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum has been the industry's standard dummy text.
+                        Lorem Ipsum is simply dummy.</p>
+                    <a href="{{route('front.index')}}#booking" class="btn-first btn-submit">Reserve maintenant</a> </div>
+            </div>
+            <div class="col-xl-5 col-lg-6">
+                <div class="about-right-side full-height">
+                    <div class="about-img full-height">
+                        <img src="assets/images/about.jpg" class="img-fluid image-fit" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End About Us -->
 @endsection

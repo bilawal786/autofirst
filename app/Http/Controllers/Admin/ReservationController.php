@@ -61,6 +61,7 @@ class ReservationController extends Controller
         $reservation->babies = $request->babies;
         $reservation->details = $request->details;
         $reservation->vehicle_id = $request->vehicle_id;
+        $reservation->flight_no = $request->flight_no;
 
         if($request->options){
             foreach($request->options as $option)

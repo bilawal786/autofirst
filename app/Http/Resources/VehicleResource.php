@@ -24,6 +24,7 @@ class VehicleResource extends JsonResource
             'vehicle_number' => $this->registration,
             'vehicle_modal' => $this->modal->name,
             'vehicle_image' => $this->image,
+            'vehicle_id' => $this->id,
         ];
     }
 }
