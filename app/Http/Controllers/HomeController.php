@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $reservations = Reservation::latest()->take(5)->get();
-        return view('home', compact('reservations'));
+        $reservationsamount = Reservation::all();
+        return view('home', compact('reservations', 'reservationsamount'));
     }
 }
