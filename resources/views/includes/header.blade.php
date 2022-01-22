@@ -35,15 +35,15 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Bienvenue !</h6>
                         </div>
-                        <a href="#" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>Mon profil</span>
-                        </a>
+{{--                        <a href="#" class="dropdown-item">--}}
+{{--                            <i class="ni ni-single-02"></i>--}}
+{{--                            <span>Mon profil</span>--}}
+{{--                        </a>--}}
 
-                        <a href="#" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
+{{--                        <a href="#" class="dropdown-item">--}}
+{{--                            <i class="ni ni-settings-gear-65"></i>--}}
+{{--                            <span>Settings</span>--}}
+{{--                        </a>--}}
                         <!--<a href="#!" class="dropdown-item">
                             <i class="ni ni-support-16"></i>
                             <span>Support</span>
