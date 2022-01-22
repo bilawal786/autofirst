@@ -17,8 +17,9 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index(){
+        $content = \App\Content::find(1);
         $vehicles = Vehicle::latest()->where('status', 1)->get();
-        return view('front.index', compact('vehicles'));
+        return view('front.index', compact('vehicles', 'content'));
     }
     public function success(){
         return view('front.success');

@@ -62,6 +62,11 @@ Route::prefix('admin')->group(function () {
          Route::post('/category/update/{id}', 'Admin\CategoryController@update')->name('category.update');
          Route::get('/category/delete/{id}', 'Admin\CategoryController@delete')->name('category.delete');
 
+         Route::get('/users', 'Admin\UsersController@index')->name('users.index');
+         Route::post('/users/store', 'Admin\UsersController@store')->name('users.store');
+         Route::post('/users/update/{id}', 'Admin\UsersController@update')->name('users.update');
+         Route::get('/users/delete/{id}', 'Admin\UsersController@delete')->name('users.delete');
+
          Route::get('/direct/reservation', 'Admin\ReservationController@direct')->name('direct.reservation');
          Route::get('/reservations', 'Admin\ReservationController@reservations')->name('admin.reservations');
          Route::get('/delete/reservation/{id}', 'Admin\ReservationController@reservationsDelete')->name('delete.reservation');
@@ -69,6 +74,9 @@ Route::prefix('admin')->group(function () {
          Route::get('/admin/calender', 'Admin\ReservationController@calender')->name('admin.calender');
          Route::post('/reservation/store', 'Admin\ReservationController@store')->name('reservation.store');
          Route::get('/json', 'Admin\ReservationController@json')->name('json');
+
+         Route::get('/contract/create/{id}', 'Admin\ReservationController@contract')->name('contract.create');
+         Route::get('/invoice/create/{id}', 'Admin\ReservationController@invoice')->name('invoice.create');
 
          Route::get('/settings', 'Admin\ContentController@index')->name('settings.index');
          Route::post('/settings/store', 'Admin\ContentController@store')->name('content.store');

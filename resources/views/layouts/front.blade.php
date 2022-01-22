@@ -7,12 +7,15 @@
     <meta name="keywords" content="#">
     <meta name="description" content="#">
     <title>Auto First</title>
+    <?php
+    $content = \App\Content::find(1);
+    ?>
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('/assets/images/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('/assets/images/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('/assets/images/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('/assets/images/favicon.ico')}}">
-    <link rel="shortcut icon" href="{{asset('/assets/images/favicon.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{$content->logo}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{$content->logo}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{$content->logo}}">
+    <link rel="apple-touch-icon-precomposed" href="{{$content->logo}}">
+    <link rel="shortcut icon" href="{{$content->logo}}">
     <!-- Bootstrap -->
     <link href="{{asset('/assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Fontawesome -->
@@ -95,8 +98,8 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="leftside">
                         <ul class="custom-flex">
-                            <li> <a href="#" class="text-custom-white"><i class="fab fa-facebook-f"></i></a> </li>
-                            <li> <a href="#" class="text-custom-white"><i class="fab fa-instagram"></i></a> </li>
+                            <li> <a href="{{$content->facebook}}" class="text-custom-white"><i class="fab fa-facebook-f"></i></a> </li>
+                            <li> <a href="{{$content->instagram}}" class="text-custom-white"><i class="fab fa-instagram"></i></a> </li>
                         </ul>
                     </div>
                 </div>
@@ -116,7 +119,7 @@
                 <div class="col-12">
                     <nav>
                         <div class="main-navigation">
-                            <div class="logo"> <a href="{{route('front.index')}}"> <img src="{{asset('local/logo.png')}}" class="image-fit" alt="logo"> </a> </div>
+                            <div class="logo"> <a href="{{route('front.index')}}"> <img src="{{asset($content->logo)}}" class="image-fit" alt="logo"> </a> </div>
                             <div class="main-menu">
                                 <ul class="custom-flex">
                                     <li class="menu-item active"> <a href="{{route('front.index')}}">Accueil</a> </li>
@@ -147,7 +150,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-box mb-md-40">
                     <h4 class="text-custom-white fw-600">À propos de nous</h4>
-                    <p class="text-custom-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet...
+                    <p class="text-custom-white">{{$content->footer}}
                     </p>
 
                 </div>
@@ -159,12 +162,13 @@
                 <div class="footer-box mb-md-40">
                     <h4 class="text-custom-white fw-600">Contact</h4>
                     <ul class="m-0 p-0 main">
-                        <li>1-567-124-44227</li>
-                        <li>182 main street pert habour 8007</li>
+                        <li>{{$content->phone}}</li>
+                        <li>{{$content->email}}</li>
+                        <li>{{$content->address}}</li>
                     </ul>
                     <ul class="custom-flex socials">
-                        <li><a href="#" class="text-custom-white fs-14"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="text-custom-white fs-14"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="{{$content->facebook}}" class="text-custom-white fs-14"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{$content->instagram}}" class="text-custom-white fs-14"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>

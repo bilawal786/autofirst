@@ -100,6 +100,16 @@
                                                                         <label for="color" class="col-form-label">Image</label>
                                                                         <input type="file" class="form-control" id="image" name="image">
                                                                     </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label">Catégorie</label>
+                                                                            <select name="category" class="form-control" id="">
+                                                                                @foreach($categories as $cate)
+                                                                                    <option {{$cate->id == $vehicule->category? 'selected':''}} value="{{$cate->id}}">{{$cate->name}}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="form-group col-md-6">
                                                                         <label for="color" class="col-form-label">Statut</label>
                                                                         <select name="status" class="form-control" id="">

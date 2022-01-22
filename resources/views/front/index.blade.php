@@ -4,7 +4,7 @@
 <!-- Start Slider -->
 <div class="slider p-relative">
     <div class="main-banner arrow-layout-1 ">
-        <div class="slide-item"> <img src="assets/images/car-1.jpg" class="image-fit" alt="Slider">
+        <div class="slide-item"> <img src="{{asset($content->image1)}}" class="image-fit" alt="Slider">
             <div class="transform-center">
                 <div class="container">
                     <div class="row">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="slide-item"> <img src="assets/images/car-1.jpg" class="image-fit" alt="Slider">
+        <div class="slide-item"> <img src="{{asset($content->image2)}}" class="image-fit" alt="Slider">
             <div class="transform-center">
                 <div class="container">
                     <div class="row">
@@ -233,23 +233,18 @@
                 <div class="about-left-side mb-md-80">
                     <div class="section-header style-left">
                         <div class="section-heading">
-                            <h3 class="text-custom-black">Subaru Impreza</h3>
+                            <h3 class="text-custom-black">{{$content->h1}}</h3>
                             <div class="section-description">
-                                <div class="car-price"> <strong>125 €</strong> <span>/Day</span> </div>
                             </div>
                         </div>
                     </div>
-                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                    <p class="pt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum has been the industry's standard dummy text.
-                        Lorem Ipsum is simply dummy.</p>
+                    <p class="pt-2">{{$content->d1}}</p>
                     <a href="{{route('front.index')}}#booking" class="btn-first btn-submit">Reserve maintenant</a> </div>
             </div>
             <div class="col-xl-5 col-lg-6">
                 <div class="about-right-side full-height">
                     <div class="about-img full-height">
-                        <img src="assets/images/about.jpg" class="img-fluid image-fit" alt="img">
+                        <img src="{{$content->image3}}" class="img-fluid image-fit" alt="img">
                     </div>
                 </div>
             </div>

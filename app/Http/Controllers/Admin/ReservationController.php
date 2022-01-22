@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Content;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeasonResource;
@@ -11,7 +12,7 @@ use App\Reservation;
 use App\Season;
 use App\Vehicle;
 use Illuminate\Http\Request;
-
+use PDF;
 class ReservationController extends Controller
 {
     public function reservations(){
@@ -62,6 +63,7 @@ class ReservationController extends Controller
         $reservation->details = $request->details;
         $reservation->vehicle_id = $request->vehicle_id;
         $reservation->flight_no = $request->flight_no;
+        $reservation->payment_method = $request->payment_method;
 
         if($request->options){
             foreach($request->options as $option)
@@ -114,6 +116,20 @@ class ReservationController extends Controller
             'messege' => 'Supreme!',
             'alert-type' => 'error'
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route('admin.reservations')->with($notification);
+    }
+    public function contract($id){
+        $data['data'] = Reservation::find($id);
+        $data['gs'] = Content::find(1);
+        $pdf = PDF::loadView('pdf.contract',$data);
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->stream();
+    }
+    public function invoice($id){
+        $data['data'] = Reservation::find($id);
+        $data['gs'] = Content::find(1);
+        $pdf = PDF::loadView('pdf.invoice',$data);
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->stream();
     }
 }

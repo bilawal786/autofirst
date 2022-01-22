@@ -12,8 +12,9 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
     public function index(){
+        $categories = Category::all();
         $vehicles = Vehicle::latest()->get();
-        return view('admin.vehicle.index', compact('vehicles'));
+        return view('admin.vehicle.index', compact('vehicles', 'categories'));
     }
     public function create(){
         $marques = Marque::all();

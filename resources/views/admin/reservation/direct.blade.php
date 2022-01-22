@@ -712,7 +712,7 @@
                                                     <div class="input-group">
                                                         <input type="hidden" name="TotalTTC" id="TotalTTC">
                                                         <select class="form-control custom-select d-block w-100" id="payment_method" name="payment_method" onchange="moyenPaiementGet(this.options[this.selectedIndex].text)" required>
-                                                            <option disabled selected>Moyen de paiement</option>
+                                                            <option value="Paiement sur place">Paiement sur place</option>
 {{--                                                            @foreach($gateways as $gateway)--}}
 {{--                                                                <option value="{{$gateway->id}}">{{$gateway->nom_client}} @if($gateway->nom_client != $gateway->nom) - {{$gateway->nom}} @endif</option>--}}
 {{--                                                            @endforeach--}}

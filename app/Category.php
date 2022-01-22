@@ -9,6 +9,6 @@ class Category extends Model
     //vehicles
     public function vehicles()
     {
-        return $this->hasMany('App\Vehicle', 'category');
+        return $this->hasMany('App\Vehicle', 'category')->where('status', 1);
     }
 }
