@@ -83,6 +83,15 @@
             background-color: #000;
             opacity: 0;
         }
+        .arrow-layout-1.slick-slider:hover .slick-next {
+            right: 15px;
+            background-color: #fc802a;
+        }
+        .nice-select .option:hover, .nice-select .option.focus {
+            background-color: #fc802a;
+            color: #fff;
+            font-weight: 500;
+        }
         @media screen and (min-width: 480px) {
 
         }

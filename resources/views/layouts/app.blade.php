@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{asset('backend/summernote/summernote-bs4.min.css')}}">
 
     <style>.pagination-info{display:none;} .table-responsive, #calendar{padding: 10px;} td, .th-inner{text-align: center;}</style>
     @stack('styles')
@@ -56,6 +58,8 @@
     <script src="{{asset('backend/assets/js/jquery-ui.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Summernote -->
+    <script src="{{asset('backend/summernote/summernote-bs4.min.js')}}"></script>
     <script>
         @if(Session::has('messege'))
         var type="{{Session::get('alert-type','info')}}"
@@ -97,7 +101,12 @@
         });
 
     </script>
-
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote()
+        })
+    </script>
 @stack('scripts')
 </body>
 </html>
