@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Agency;
 use App\Category;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
@@ -18,8 +19,10 @@ class FrontendController extends Controller
 {
     public function index(){
         $content = \App\Content::find(1);
-        $vehicles = Vehicle::latest()->where('status', 1)->get();
-        return view('front.index', compact('vehicles', 'content'));
+        $ve = Vehicle::latest()->where('status', 1)->get();
+        $vehicles = $ve->unique('modal_id');
+        $agency = Agency::latest()->get();
+        return view('front.index', compact('vehicles', 'content', 'agency'));
     }
     public function success(){
         return view('front.success');
@@ -73,6 +76,11 @@ class FrontendController extends Controller
         $reservation->babies = $request->babies;
         $reservation->details = $request->details;
         $reservation->vehicle_id = $request->vehicle_id;
+        $reservation->flight_no = $request->flight_no;
+        $reservation->start_price = $request->start_price;
+        $reservation->end_price = $request->end_price;
+        $reservation->rate_per_day = $request->rate_per_day;
+        $reservation->payment_method = "Paiement via le site Web en ligne";
 
         if($request->options){
             foreach($request->options as $option)

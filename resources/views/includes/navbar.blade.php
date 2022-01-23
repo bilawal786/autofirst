@@ -114,6 +114,11 @@
                            class="nav-link {{ (request()->is('*admin/season')) ? 'active' : '' }}"><i
                                 class="far text-primary fa-money-bill-alt"></i><span class="nav-link-text">Saisons des Tarifs</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('agency.index')}}"
+                           class="nav-link {{ (request()->is('*admin/season')) ? 'active' : '' }}"><i
+                                class="fas text-primary fa-angle-double-down"></i><span class="nav-link-text">Point de Livraison</span></a>
+                    </li>
                     @endif
                     @if($user->website ==1)
                     <li class="nav-small-cap">Réglages</li>

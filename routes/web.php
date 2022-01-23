@@ -67,6 +67,11 @@ Route::prefix('admin')->group(function () {
          Route::post('/users/update/{id}', 'Admin\UsersController@update')->name('users.update');
          Route::get('/users/delete/{id}', 'Admin\UsersController@delete')->name('users.delete');
 
+         Route::get('/agency', 'Admin\AgencyController@index')->name('agency.index');
+         Route::post('/agency/store', 'Admin\AgencyController@store')->name('agency.store');
+         Route::post('/agency/update/{id}', 'Admin\AgencyController@update')->name('agency.update');
+         Route::get('/agency/delete/{id}', 'Admin\AgencyController@delete')->name('agency.delete');
+
          Route::get('/direct/reservation', 'Admin\ReservationController@direct')->name('direct.reservation');
          Route::get('/reservations', 'Admin\ReservationController@reservations')->name('admin.reservations');
          Route::get('/delete/reservation/{id}', 'Admin\ReservationController@reservationsDelete')->name('delete.reservation');

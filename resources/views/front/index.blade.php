@@ -46,18 +46,20 @@
                                         <div class="col-lg-4 col-md-6">
                                             <div class="form-group">
                                                 <label class="fs-14 text-custom-black fw-500">Agence de départ</label>
-                                                <select name="start_point" class="custom-select form-control form-control-custom">
-                                                    <option value="Aéroport Pôle Caraïbes">Aéroport Pôle Caraïbes</option>
-                                                    <option value="Agence Baie-Mahault">Agence Baie-Mahault</option>
-                                                    <option value="Agence Sainte-Anne">Agence Sainte-Anne</option>
+                                                <select required name="start_point" class="custom-select form-control form-control-custom">
+                                                    <option value="">Agence de départ</option>
+                                                    @foreach($agency as $agen)
+                                                    <option value="{{$agen->id}}">{{$agen->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label class="fs-14 text-custom-black fw-500">Agence de retour</label>
-                                                <select name="end_point" class="custom-select form-control form-control-custom">
-                                                    <option value="Aéroport Pôle Caraïbes">Aéroport Pôle Caraïbes</option>
-                                                    <option value="Agence Baie-Mahault">Agence Baie-Mahault</option>
-                                                    <option value="Agence Sainte-Anne">Agence Sainte-Anne</option>
+                                                <select required name="end_point" class="custom-select form-control form-control-custom">
+                                                    <option value="">Agence de retour</option>
+                                                    @foreach($agency as $agen)
+                                                        <option value="{{$agen->id}}">{{$agen->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -67,7 +69,7 @@
                                                     <div class="form-group">
                                                         <label class="fs-14 text-custom-black fw-500">Date de départ</label>
                                                         <div required="" class="input-group group-form">
-                                                            <input type="text" name="departure_date" id="departure_date" class="form-control form-control-custom datepickr" placeholder="dd/mm/yyyy" readonly>
+                                                            <input type="text" name="departure_date" id="departure_date" class="form-control form-control-custom datepickr" placeholder="jj/mm/aaaa" required>
                                                             <span class="input-group-append"> <i class="far fa-calendar"></i> </span> </div>
                                                     </div>
                                                 </div>
@@ -120,7 +122,7 @@
                                                     <div class="form-group">
                                                         <label class="fs-14 text-custom-black fw-500"> Date de retour </label>
                                                         <div class="input-group group-form">
-                                                            <input required="" type="text" name="return_date" class="form-control form-control-custom datepickr" placeholder="dd/mm/yyyy" readonly>
+                                                            <input required="" type="text" name="return_date" class="form-control form-control-custom datepickr" placeholder="jj/mm/aaaa" required>
                                                             <span class="input-group-append"> <i class="far fa-calendar"></i> </span> </div>
                                                     </div>
                                                 </div>
@@ -211,7 +213,7 @@
                             <div class="car-grid-wrapper car-grid bx-wrapper">
                                 <div class="image-sec animate-img"> <a href="#"> <img src="{{asset($vehicle->image)}}" class="full-width" alt="img"> </a> </div>
                                 <div class="car-grid-caption padding-20 bg-custom-white p-relative">
-                                    <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$vehicle->marque->name??'Supreme'}} {{$vehicle->modal->name??'Supreme'}} ({{$vehicle->registration??'Supreme'}})<small class="text-light-dark">Par jour</small></a></h4>
+                                    <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$vehicle->marque->name??'Supreme'}} {{$vehicle->modal->name??'Supreme'}} <small class="text-light-dark">Par jour</small></a></h4>
                                     <span class="price"><small>From</small>20 €</span>
                                 </div>
                             </div>

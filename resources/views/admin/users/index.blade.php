@@ -102,7 +102,7 @@
                                                     <div class="form-group p-2 d-inline-block">
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" name="modals" value="1" class="custom-control-input" id="modals">
-                                                            <label for="modals" class="custom-control-label">Modals</label>
+                                                            <label for="modals" class="custom-control-label">Modèle</label>
                                                         </div>
                                                     </div>
                                                 </div>

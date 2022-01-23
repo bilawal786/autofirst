@@ -46,10 +46,11 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-form-label">Agence de départ</label>
                                                     <div class="input-group">
-                                                        <select class="form-control custom-select d-block w-100" id="lieu_depart" name="start_point" onchange="document.getElementById('lieu_retour').value = this.value;" required>
-                                                                <option value="Aéroport Pôle Caraïbes">Aéroport Pôle Caraïbes</option>
-                                                                <option value="Agence Baie-Mahault">Agence Baie-Mahault</option>
-                                                                <option value="Agence Sainte-Anne">Agence Sainte-Anne</option>
+                                                        <select class="form-control custom-select d-block w-100" id="lieu_depart" name="start_point" onchange="fetchstartprice(this)" required>
+                                                           <option></option>
+                                                            @foreach($agency as $agen)
+                                                                <option value="{{$agen->id}}">{{$agen->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -113,10 +114,11 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-form-label" name="lieu_retour_id">Agence de retour</label>
                                                     <div class="input-group">
-                                                        <select class="form-control custom-select d-block w-100" id="lieu_retour" name="end_point" required>
-                                                            <option value="Aéroport Pôle Caraïbes">Aéroport Pôle Caraïbes</option>
-                                                            <option value="Agence Baie-Mahault">Agence Baie-Mahault</option>
-                                                            <option value="Agence Sainte-Anne">Agence Sainte-Anne</option>
+                                                        <select class="form-control custom-select d-block w-100" id="lieu_retour" onchange="fetchendprice(this)" name="end_point" required>
+                                                            <option></option>
+                                                            @foreach($agency as $agen)
+                                                                <option value="{{$agen->id}}">{{$agen->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -840,5 +842,13 @@
 
             $('div.setup-panel div a.btn-primary').trigger('click');
         });
+    </script>
+    <script>
+        function fetchstartprice(elem){
+            alert(elem.value);
+        }
+        function fetchendprice(elem){
+            alert(elem.value);
+        }
     </script>
 @endpush

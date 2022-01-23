@@ -51,7 +51,7 @@
                                         <td scope="row">
                                             <strong class="bold">Véhicule
                                                 :</strong> {{$reservation->vehicle->marque->name??''}} {{$reservation->vehicle->modal->name??''}}
-                                            - {{$reservation->vehicule->registeration??""}}
+                                            - {{$reservation->vehicle->registration??""}}
                                         </td>
                                         <td scope="row">
                                             <strong class="bold">Nb de personne
@@ -64,9 +64,16 @@
                             </div>
                             <div class="row m-t-20">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <a style="margin:auto;color: white;" href="{{route('contract.create', ['id' => $reservation->id])}}" class="btn btn-effect-ripple btn-xs btn-info" target="_blank">Voir le Contrat</a>
-                                    <a style="margin:auto;color: white;" href="{{route('invoice.create', ['id' => $reservation->id])}}" class="btn btn-effect-ripple btn-xs btn-success" target="_blank">Voir la Facture</a>
-                                    <a style="margin:auto;color: white;" id="btn-resa-delete" data-toggle="modal" data-target="#modalSuppressionResaT{{$reservation->id}}" title="Suppression" class="btn btn-effect-ripple btn-xs btn-danger">Supprimer</a>
+                                    <a style="margin:auto;color: white;"
+                                       href="{{route('contract.create', ['id' => $reservation->id])}}"
+                                       class="btn btn-effect-ripple btn-xs btn-info" target="_blank">Voir le Contrat</a>
+                                    <a style="margin:auto;color: white;"
+                                       href="{{route('invoice.create', ['id' => $reservation->id])}}"
+                                       class="btn btn-effect-ripple btn-xs btn-success" target="_blank">Voir la
+                                        Facture</a>
+                                    <a style="margin:auto;color: white;" id="btn-resa-delete" data-toggle="modal"
+                                       data-target="#modalSuppressionResaT{{$reservation->id}}" title="Suppression"
+                                       class="btn btn-effect-ripple btn-xs btn-danger">Supprimer</a>
                                     <div class="modal fade" id="modalSuppressionResaT{{$reservation->id}}" tabindex="-1"
                                          role="dialog" aria-labelledby="modalSuppressionResaT{{$reservation->id}}"
                                          aria-hidden="true">
@@ -103,162 +110,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="modalPayer{{$reservation->id}}" tabindex="-1"
-                                         role="dialog" aria-labelledby="modalPayer{{$reservation->id}}"
-                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-danger modal-dialog-centered modal-"
-                                             role="document">
-                                            <div class="modal-content bg-gradient-danger">
-                                                <div class="modal-header">
-                                                    <h6 class="modal-title" id="modal-title-notification">
-                                                        Confirmation</h6>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="update_date{{$reservation->id}}" method="post"
-                                                          class="form-horizontal form-bordered">
-                                                        @csrf
-                                                        <div class="py-3 text-center">
-                                                            <i class="ni ni-bell-55 ni-3x"></i>
-                                                            <h4 class="heading mt-4">Modification des dates de
-                                                                reservation</h4>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-12 col-form-label">Date
-                                                                    Debut </label>
-                                                                <div class="col-md-6">
-                                                                    <input type="date" name="date_debut"
-                                                                           class="form-control" value="">
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <select class="custom-select d-block w-100"
-                                                                            name="heure_debut" id="pickup-time">
-                                                                        <option value="00:00">00:00</option>
-                                                                        <option value="00:30">00:30</option>
-                                                                        <option value="01:00">01:00</option>
-                                                                        <option value="01:30">01:30</option>
-                                                                        <option value="02:00">02:00</option>
-                                                                        <option value="02:30">02:30</option>
-                                                                        <option value="03:00">03:00</option>
-                                                                        <option value="03:30">03:30</option>
-                                                                        <option value="04:00">04:00</option>
-                                                                        <option value="04:30">04:30</option>
-                                                                        <option value="05:00">05:00</option>
-                                                                        <option value="05:30">05:30</option>
-                                                                        <option value="06:00">06:00</option>
-                                                                        <option value="06:30">06:30</option>
-                                                                        <option value="07:00">07:00</option>
-                                                                        <option value="07:30">07:30</option>
-                                                                        <option value="08:00">08:00</option>
-                                                                        <option value="08:30">08:30</option>
-                                                                        <option value="09:00">09:00</option>
-                                                                        <option value="09:30">09:30</option>
-                                                                        <option value="10:00" selected>10:00</option>
-                                                                        <option value="10:30">10:30</option>
-                                                                        <option value="11:00">11:00</option>
-                                                                        <option value="11:30">11:30</option>
-                                                                        <option value="12:00">12:00</option>
-                                                                        <option value="12:30">12:30</option>
-                                                                        <option value="13:00">13:00</option>
-                                                                        <option value="13:30">13:30</option>
-                                                                        <option value="14:00">14:00</option>
-                                                                        <option value="14:30">14:30</option>
-                                                                        <option value="15:00">15:00</option>
-                                                                        <option value="15:30">15:30</option>
-                                                                        <option value="16:00">16:00</option>
-                                                                        <option value="16:30">16:30</option>
-                                                                        <option value="17:00">17:00</option>
-                                                                        <option value="17:30">17:30</option>
-                                                                        <option value="18:00">18:00</option>
-                                                                        <option value="18:30">18:30</option>
-                                                                        <option value="19:00">19:00</option>
-                                                                        <option value="19:30">19:30</option>
-                                                                        <option value="20:00">20:00</option>
-                                                                        <option value="20:30">20:30</option>
-                                                                        <option value="21:00">21:00</option>
-                                                                        <option value="21:30">21:30</option>
-                                                                        <option value="22:00">22:00</option>
-                                                                        <option value="22:30">22:30</option>
-                                                                        <option value="23:00">23:00</option>
-                                                                        <option value="23:30">23:30</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-12 col-form-label">Date Fin</label>
-                                                                <div class="col-md-6">
-                                                                    <input type="date" name="date_fin"
-                                                                           class="form-control" value="">
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <select class="custom-select d-block w-100"
-                                                                            name="heure_fin" id="pickup-time">
-                                                                        <option value="00:00">00:00</option>
-                                                                        <option value="00:30">00:30</option>
-                                                                        <option value="01:00">01:00</option>
-                                                                        <option value="01:30">01:30</option>
-                                                                        <option value="02:00">02:00</option>
-                                                                        <option value="02:30">02:30</option>
-                                                                        <option value="03:00">03:00</option>
-                                                                        <option value="03:30">03:30</option>
-                                                                        <option value="04:00">04:00</option>
-                                                                        <option value="04:30">04:30</option>
-                                                                        <option value="05:00">05:00</option>
-                                                                        <option value="05:30">05:30</option>
-                                                                        <option value="06:00">06:00</option>
-                                                                        <option value="06:30">06:30</option>
-                                                                        <option value="07:00">07:00</option>
-                                                                        <option value="07:30">07:30</option>
-                                                                        <option value="08:00">08:00</option>
-                                                                        <option value="08:30">08:30</option>
-                                                                        <option value="09:00">09:00</option>
-                                                                        <option value="09:30">09:30</option>
-                                                                        <option value="10:00" selected>10:00</option>
-                                                                        <option value="10:30">10:30</option>
-                                                                        <option value="11:00">11:00</option>
-                                                                        <option value="11:30">11:30</option>
-                                                                        <option value="12:00">12:00</option>
-                                                                        <option value="12:30">12:30</option>
-                                                                        <option value="13:00">13:00</option>
-                                                                        <option value="13:30">13:30</option>
-                                                                        <option value="14:00">14:00</option>
-                                                                        <option value="14:30">14:30</option>
-                                                                        <option value="15:00">15:00</option>
-                                                                        <option value="15:30">15:30</option>
-                                                                        <option value="16:00">16:00</option>
-                                                                        <option value="16:30">16:30</option>
-                                                                        <option value="17:00">17:00</option>
-                                                                        <option value="17:30">17:30</option>
-                                                                        <option value="18:00">18:00</option>
-                                                                        <option value="18:30">18:30</option>
-                                                                        <option value="19:00">19:00</option>
-                                                                        <option value="19:30">19:30</option>
-                                                                        <option value="20:00">20:00</option>
-                                                                        <option value="20:30">20:30</option>
-                                                                        <option value="21:00">21:00</option>
-                                                                        <option value="21:30">21:30</option>
-                                                                        <option value="22:00">22:00</option>
-                                                                        <option value="22:30">22:30</option>
-                                                                        <option value="23:00">23:00</option>
-                                                                        <option value="23:30">23:30</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">Valider
-                                                            </button>
-                                                            <button class="btn btn-secondary" data-dismiss="modal">
-                                                                Fermer
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -276,7 +127,7 @@
                                             <td>
                                                 <strong class="float-left">Départ</strong>
                                                 <div
-                                                    class="float-right">{{$reservation->start_point. ' le '.$reservation->departure_date.' a '.$reservation->departure_time}}</div>
+                                                    class="float-right">{{$reservation->start->name. ' le '.$reservation->departure_date.' a '.$reservation->departure_time}}</div>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -292,7 +143,7 @@
                                         <tr>
                                             <td><strong class="float-left">Retour</strong>
                                                 <div
-                                                    class="float-right">{{$reservation->end_point. ' le '.$reservation->return_date.' a '.$reservation->return_time}}</div>
+                                                    class="float-right">{{$reservation->end->name. ' le '.$reservation->return_date.' a '.$reservation->return_time}}</div>
                                             </td>
                                             <td></td>
                                         </tr>

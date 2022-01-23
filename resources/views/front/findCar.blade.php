@@ -51,6 +51,14 @@
                                 @endforeach
                             @endforeach
                         </div>
+                        <?php
+                        $start_agency = \App\Agency::find($start_point);
+                        $end_agency = \App\Agency::find($end_point);
+                        ?>
+                        <input type="hidden" class="start_point" name="start_price" value="{{$start_agency->price}}">
+                        <input type="hidden" class="end_point" name="end_price" value="{{$end_agency->price}}">
+
+
                         <input type="hidden" name="start_point" value="{{$start_point}}">
                         <input type="hidden" name="end_point" value="{{$end_point}}">
                         <input type="hidden" name="departure_date" value="{{$depart}}">
@@ -58,6 +66,7 @@
                         <input type="hidden" name="return_date" value="{{$retour}}">
                         <input type="hidden" name="return_time" value="{{$end_time}}">
                         <input id="days" type="hidden" name="days" value="{{$days}}">
+                        <input id="rate_per_day" type="hidden" name="rate_per_day" value="">
                         <input id="totalamount" type="hidden" name="totalamount" value="">
                         <hr>
                         <div class="row">
@@ -121,7 +130,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h5 class="text-custom-black">Vos informations personnelles</h5>
-                                            <h5 class="text-custom-black"><b id="total">0</b>€</h5>
+{{--                                            <h5 class="text-custom-black"><b id="total">0</b>€</h5>--}}
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -505,7 +514,7 @@
                                                     <div class="form-group">
                                                         <label>Numero de vol </label>
                                                         <div class="input-group">
-                                                            <input type="text" placeholder="ex. TX542" class="form-control" name="num_vol">
+                                                            <input type="text" placeholder="ex. TX542" class="form-control" name="flight_no">
                                                         </div>
                                                     </div>
                                                 </div>

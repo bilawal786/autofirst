@@ -8,13 +8,16 @@
         * {
             font-family: Verdana, Arial, sans-serif;
         }
-        table{
+
+        table {
             font-size: x-small;
         }
-        tfoot tr td{
+
+        tfoot tr td {
             font-weight: bold;
             font-size: x-small;
         }
+
         .gray {
             background-color: lightgray
         }
@@ -65,22 +68,30 @@
     </tr>
     </thead>
     <tbody>
+    <?php
+    $start_agency = \App\Agency::find($data->start_point);
+    $end_agency = \App\Agency::find($data->end_point);
+    ?>
     <tr>
-        <td>Départ : {{$data->start_point}}</td>
+        <td>Départ : {{$data->start->name}}</td>
 
-        <td align="right">0€</td>
-        <td align="right">0€</td>
+        <td align="right">{{$start_agency->price}}€</td>
+        <td align="right">{{$start_agency->price}}€</td>
     </tr>
     <tr>
-        <td>Retour : {{$data->end_point}}</td>
-        <td align="right" >0€</td>
-        <td align="right">0€</td>
+        <td>Retour : {{$data->end->name}}</td>
+        <td align="right">{{$end_agency->price}}€</td>
+        <td align="right">{{$end_agency->price}}€</td>
     </tr>
     <tr>
-        <td align="left">Reservation du vehicule {{$data->vehicle->marque->name??''}} {{$data->vehicle->modal->name??''}} Du <strong>{{\Carbon\Carbon::parse($data->departure_date)->format('d/m/Y')}}</strong> à <strong>{{$data->departure_time}}</strong>
-            Au <strong>{{\Carbon\Carbon::parse($data->return_date)->format('d/m/Y')}}</strong> à <strong>{{$data->return_time}}</strong> </td>
+        <td align="left">Reservation du
+            vehicule {{$data->vehicle->marque->name??''}} {{$data->vehicle->modal->name??''}} Du
+            <strong>{{\Carbon\Carbon::parse($data->departure_date)->format('d/m/Y')}}</strong> à
+            <strong>{{$data->departure_time}}</strong>
+            Au <strong>{{\Carbon\Carbon::parse($data->return_date)->format('d/m/Y')}}</strong> à
+            <strong>{{$data->return_time}}</strong></td>
         <td align="right"></td>
-        <td align="right">{{$data->totalamount}}€</td>
+        <td align="right">{{$data->days * $data->rate_per_day}}€</td>
     </tr>
     </tbody>
     <tfoot>

@@ -627,7 +627,7 @@
                 <td style="vertical-align:top;border-top-style:solid;border-top-color:#000000;border-top-width:1pt;border-left-style:solid;border-left-color:#000000;border-left-width:1pt;border-right-style:none;border-right-color:#000000;border-bottom-style:solid;border-bottom-color:#000000;border-bottom-width:1pt;padding-left:5.4pt;padding-right:5.4pt;padding-top:0pt;padding-bottom:0pt;width:348.5333px;">
                     <p style="text-align:left;page-break-inside:auto;page-break-after:auto;page-break-before:avoid;line-height:normal;margin-top:12pt;margin-bottom:0pt;">
                         <span
-                            style="color:#000000;font-family:Arial;font-size:8pt;background-color:#FFFFFF;text-transform:none;font-weight:bold;font-style:normal;font-variant:normal;mso-spacerun:yes;">HEURE | {{$data->departure_time}} | LIEU | {{$data->start_point}}</span>
+                            style="color:#000000;font-family:Arial;font-size:8pt;background-color:#FFFFFF;text-transform:none;font-weight:bold;font-style:normal;font-variant:normal;mso-spacerun:yes;">HEURE | {{$data->departure_time}} | LIEU | {{$data->start->name}}</span>
                     </p>
                 </td>
             </tr>
@@ -655,7 +655,7 @@
                 <td style="vertical-align:top;border-top-style:solid;border-top-color:#000000;border-top-width:1pt;border-left-style:solid;border-left-color:#000000;border-left-width:1pt;border-right-style:none;border-right-color:#000000;border-bottom-style:solid;border-bottom-color:#000000;border-bottom-width:1pt;padding-left:5.4pt;padding-right:5.4pt;padding-top:0pt;padding-bottom:0pt;width:348.5333px;">
                     <p style="text-align:left;page-break-inside:auto;page-break-after:auto;page-break-before:avoid;line-height:normal;margin-top:12pt;margin-bottom:0pt;">
                         <span
-                            style="color:#000000;font-family:Arial;font-size:8pt;background-color:#FFFFFF;text-transform:none;font-weight:bold;font-style:normal;font-variant:normal;mso-spacerun:yes;">HEURE | {{$data->return_time}} | LIEU | {{$data->end_point}}</span>
+                            style="color:#000000;font-family:Arial;font-size:8pt;background-color:#FFFFFF;text-transform:none;font-weight:bold;font-style:normal;font-variant:normal;mso-spacerun:yes;">HEURE | {{$data->return_time}} | LIEU | {{$data->end->name}}</span>
                     </p>
                 </td>
             </tr>

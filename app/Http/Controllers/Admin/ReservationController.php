@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Agency;
 use App\Category;
 use App\Content;
 use App\Gurantee;
@@ -23,7 +24,8 @@ class ReservationController extends Controller
         $options = Option::latest()->get();
         $garanties = Gurantee::latest()->get();
         $vehicles = Vehicle::latest()->get();
-        return view('admin.reservation.direct', compact('options', 'garanties', 'vehicles'));
+        $agency = Agency::latest()->get();
+        return view('admin.reservation.direct', compact('options', 'garanties', 'vehicles', 'agency'));
     }
     public function json(Request $request){
         $depart = $request->date_depart;

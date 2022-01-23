@@ -10,4 +10,12 @@ class Reservation extends Model
     {
         return $this->belongsTo('App\Vehicle', 'vehicle_id');
     }
+    public function start()
+    {
+        return $this->belongsTo('App\Agency', 'start_point');
+    }
+    public function end()
+    {
+        return $this->belongsTo('App\Agency', 'end_point');
+    }
 }
