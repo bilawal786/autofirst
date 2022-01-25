@@ -114,18 +114,7 @@ class ReservationController extends Controller
         $pdf->stream();
         file_put_contents($filepath, $pdf->output());
 
-
-        $destinationPath1 = 'records';
-        $taxform_name1 = 'contract-'.$reservation->id.'.pdf';
-        $filepath1 = $destinationPath1.'/'.$taxform_name1;
-        $pdf1 = PDF::loadView('pdf.contract',$data);
-        $pdf1->setPaper('A4', 'portrait');
-        $pdf1->stream();
-        file_put_contents($filepath1, $pdf1->output());
-
-
         $reservation->invoice_link = $filepath;
-        $reservation->contract_link = $filepath1;
         $reservation->update();
 
         Mail::to($reservation->email)->send(new Facture($reservation));
