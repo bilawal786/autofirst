@@ -53,6 +53,11 @@ class CreateReservationsTable extends Migration
             $table->string('start_price')->nullable();
             $table->string('end_price')->nullable();
             $table->string('balance')->nullable();
+
+            $table->longText('contract_link')->nullable();
+            $table->longText('invoice_link')->nullable();
+            $table->longText('signature')->nullable();
+
             $table->integer('status')->default(1);
             $table->timestamps();
         });

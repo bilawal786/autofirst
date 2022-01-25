@@ -216,6 +216,78 @@
                         </div>
                     </div>
                 </div>
+                @if($reservation->options)
+                <div class="col-12 col-md-6">
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-body">
+                            <div class="block">
+                                <h4 class="headrer-title">Informations Options</h4>
+                                <div class="table-responsive">
+                                    <table class="table" style="text-align:center">
+                                        <tbody>
+                                        <?php
+                                        $op = json_decode($reservation->options);
+                                        ?>
+                                        @foreach(json_decode($reservation->options_id) as $key => $item)
+                                            <?php
+                                            $option = \App\Option::find($item);
+                                            ?>
+                                        <tr>
+                                            <td>
+                                              {{$option->name}}
+                                            </td>
+                                            <td>
+                                              {{$op[$key]}}
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                {{$option->price * $op[$key]}} €--}}
+{{--                                            </td>--}}
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if($reservation->gurantee)
+                <div class="col-12 col-md-6">
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-body">
+                            <div class="block">
+                                <h4 class="headrer-title">Informations Garantie</h4>
+                                <div class="table-responsive">
+                                    <table class="table" style="text-align:center">
+                                        <tbody>
+                                        <?php
+                                        $op = json_decode($reservation->gurantee);
+                                        ?>
+                                        @foreach(json_decode($reservation->gurantee_id) as $key => $item)
+                                            <?php
+                                            $option = \App\Gurantee::find($item);
+                                            ?>
+                                        <tr>
+                                            <td>
+                                              {{$option->name}}
+                                            </td>
+                                            <td>
+                                              {{$op[$key]}}
+                                            </td>
+{{--                                            <td>--}}
+{{--                                                {{$option->price * $op[$key]}} €--}}
+{{--                                            </td>--}}
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="col-12 col-md-12">
                     <div class="card" style="margin-bottom: 20px;">
                         <div class="card-body">

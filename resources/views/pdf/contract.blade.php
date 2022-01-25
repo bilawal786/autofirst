@@ -1091,7 +1091,7 @@
             style="color:#000000;font-family:Arial;font-size:8pt;background-color:#FFFFFF;text-transform:none;font-weight:normal;font-style:normal;font-variant:normal;line-height:107.916664%;">tarifs donnés à titre indicatif, n’engageant pas le loueur)</span>
     </p>
     <div>
-        <table cellspacing="0" style="width: 200pt; border-collapse: collapse; ">
+        <table cellspacing="0">
             <tr style="height: 2px">
                 <td style="vertical-align:top;border-top-style:solid;border-top-color:#000000;border-top-width:1pt;border-left-style:solid;border-left-color:#000000;border-left-width:1pt;border-right-style:solid;border-right-color:#000000;border-right-width:1pt;border-bottom-style:solid;border-bottom-color:#000000;border-bottom-width:1pt;padding-left:5.4pt;padding-right:5.4pt;padding-top:0pt;padding-bottom:0pt;width:175.8px;">
                     <p style="text-align:left;page-break-inside:auto;page-break-after:auto;page-break-before:avoid;margin-top:0pt;margin-bottom:0pt;">
@@ -1234,6 +1234,8 @@
             </tr>
         </table>
     </div>
+    <img src="{{asset($data->signature)}}" width="115" height="115" align="right" alt=""/>
+
     <p style="text-align:left;page-break-inside:auto;page-break-after:auto;page-break-before:avoid;line-height:normal;margin-top:0pt;margin-bottom:0pt;background-color:#FFFFFF;">
         <span
             style="color:#000000;font-family:Arial;font-size:6pt;text-transform:none;font-weight:normal;font-style:normal;font-variant:normal;">&#xa0;</span>

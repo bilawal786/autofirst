@@ -49,9 +49,10 @@
                                                         <select class="form-control custom-select d-block w-100" id="lieu_depart" name="start_point" onchange="fetchstartprice(this)" required>
                                                            <option></option>
                                                             @foreach($agency as $agen)
-                                                                <option value="{{$agen->id}}">{{$agen->name}}</option>
+                                                                <option data-price="{{$agen->price}}" value="{{$agen->id}}">{{$agen->name}}</option>
                                                             @endforeach
                                                         </select>
+                                                        <input type="hidden" name="start_price" class="start_price">
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,9 +118,10 @@
                                                         <select class="form-control custom-select d-block w-100" id="lieu_retour" onchange="fetchendprice(this)" name="end_point" required>
                                                             <option></option>
                                                             @foreach($agency as $agen)
-                                                                <option value="{{$agen->id}}">{{$agen->name}}</option>
+                                                                <option data-price="{{$agen->price}}" value="{{$agen->id}}">{{$agen->name}}</option>
                                                             @endforeach
                                                         </select>
+                                                        <input type="hidden" name="end_price" class="end_price">
                                                     </div>
                                                 </div>
                                             </div>
@@ -218,7 +220,11 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="quantity">
-                                                                            <input type="number" onchange="addoptions(this)" name="options[]" data-id="{{$option->id}}" data-input="{{$option->max_input}}" min="0" data-price{{$option->id}}="{{$option->price}}" max="{{$option->max_input}}" step="1" value="0" class="qty">
+                                                                            <input type="number" name="options[]" min="0" max="{{$option->max_input}}" step="1" value="0" class="qty optionqty{{$option->id}}">
+                                                                            <div class="quantity-nav">
+                                                                                <div class="quantity-button quantity-up" data-id="{{$option->id}}" data-input="{{$option->max_input}}" data-price{{$option->id}}="{{$option->price}}" onclick="addOption(this)"><i class="fa fa-caret-up"></i></div>
+                                                                                <div class="quantity-button quantity-down" data-id="{{$option->id}}" data-input="{{$option->max_input}}" data-price{{$option->id}}="{{$option->price}}" onclick="removeOption(this)"><i class="fa fa-caret-down"></i></div>
+                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -727,6 +733,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-form-label">Montant</label>
                                                     <div class="input-group">
+                                                        <input type="hidden" name="rate_per_day" class="rate_per_day">
                                                         <input type="number" class="form-control" id="totalamount" name="totalamount" required>
                                                     </div>
                                                 </div>
@@ -845,10 +852,22 @@
     </script>
     <script>
         function fetchstartprice(elem){
-            alert(elem.value);
+            var price =  $(elem).find(':selected').data('price');
+            $(".start_price").val(price);
+            var total = $("#totalamount").val();
+            var finaltotal = (+total) + (+price);
+            $("#total").html(finaltotal);
+            $("#totalamount").val(finaltotal);
+            console.log("start Price:" +price);
         }
         function fetchendprice(elem){
-            alert(elem.value);
+            var price =  $(elem).find(':selected').data('price');
+            $(".end_price").val(price);
+            var total = $("#totalamount").val();
+            var finaltotal = (+total) + (+price);
+            $("#total").html(finaltotal);
+            $("#totalamount").val(finaltotal);
+            console.log("end Price:" +price);
         }
     </script>
 @endpush

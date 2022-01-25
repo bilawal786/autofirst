@@ -21,6 +21,7 @@ class CreateOptionsTable extends Migration
             $table->string('image')->nullable();
             $table->string('price');
             $table->string('max_input')->nullable();
+            $table->string('per_day')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

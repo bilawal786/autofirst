@@ -20,6 +20,7 @@ class OptionController extends Controller
         $option->price = $request->price;
         $option->max_input = $request->max_input;
         $option->status = $request->status;
+        $option->per_day = $request->per_day;
         if ($request->hasfile('image')) {
             $image1 = $request->file('image');
             $name = time() . 'allimages' . '.' . $image1->getClientOriginalExtension();
@@ -42,6 +43,7 @@ class OptionController extends Controller
         $option->price = $request->price;
         $option->max_input = $request->max_input;
         $option->status = $request->status;
+        $option->per_day = $request->per_day;
         if ($request->hasfile('image')) {
             $image1 = $request->file('image');
             $name = time() . 'allimages' . '.' . $image1->getClientOriginalExtension();

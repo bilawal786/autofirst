@@ -7,118 +7,88 @@ optionNames=[];
 idFinal=[];
 total_form = 0;
 
-function addOption(id){
-   event.preventDefault();
-   var option_id = $('#id_option'+id).val();
-   cpt_up = $('#cpt_up'+id).val();
-   cpt_up ++;
-   nb_max_resa = $('#nb_max_resa'+id).val();
-   //console.log('nb_max_resa = '+nb_max_resa)
-   //console.log("compteur ",cpt_up);
-   if (cpt_up > nb_max_resa) {
-    // console.log("error");
-   }else{
+function carselect(elem){
 
- // Recuperation des donnée (prix_par_jour & name)
-   var namOption = document.querySelector('#name_'+id);
-   price = document.querySelector('#price_'+id);
-   //if isDaily + ajouter priceOption
-   priceT = 0;
-   priceT += parseFloat(price.value);
+    var rate_per_day =  elem.value;
+    var days = $("#days").val();
+    var total1 = days *rate_per_day;
 
-   //envoyer ce li dans checkoutCard final
-   var li =$('<li id="nameOp'+id+'">'+namOption.value+' '+price.value+'€ </li><input type="hidden" id="finalNameOp'+id+'" value="'+namOption.value+'"><input type="hidden" id="id_out'+id+'" value="'+option_id+'">');
-   $('#nameOp').append(li);
+    $(".rate_per_day").val(rate_per_day);
+    console.log("Rate per day of car: " + rate_per_day);
+    console.log("Days slected : " + days);
 
-   //stockage li
-   nameTest = document.querySelector("#finalNameOp"+id);
-   //incrementation du prix
-   tot+=priceT;
-   console.log("Total :",tot);
-   //ajout des optionName dans un tableau
-   cout = optionNames.push(nameTest.value);
-   optionNames.join('  ');
-   console.log(optionNames);
+    var total = $("#totalamount").val();
+    var finaltotal = (+total) + (+total1);
+    $("#total").html(finaltotal);
+    $("#totalamount").val(finaltotal);
 
+}
 
+function addOption(elem){
+    var id =  $(elem).data('id');
+    var price =  $(elem).data('price'+id);
+    var qty = $(".optionqty"+id).val();
+    var sum = ++qty;
+    var price_qty = price * sum;
+    var total = $("#totalamount").val();
+    var finaltotal = (+total) + (+price_qty);
+    $("#total").html(finaltotal);
+    $("#totalamount").val(finaltotal);
+    // var price_options = $(".price_options").val();
+    // var price_final = (+price_options) + (+price_qty);
+   console.log("price options: "+ price_qty);
+    // $(".price_options").val(price_qty);
 
-   //ajout id dans le tab idFinal
-   cin = idFinal.push(option_id);
-   idFinal.join('/');
-   console.log(idFinal);
+    event.preventDefault();
+}
+function removeOption(elem){
+    var id =  $(elem).data('id');
+    var price =  $(elem).data('price'+id);
+    var qty = $(".optionqty"+id).val();
+    var sum = ++qty;
+    var price_qty = price * sum;
+    var total = $("#totalamount").val();
+    var finaltotal = (+total) - (+price_qty);
+    $("#total").html(finaltotal);
+    $("#totalamount").val(finaltotal);
+    // var price_options = $(".price_options").val();
+    // var price_final = (+price_options) + (+price_qty);
+    // console.log("price options: "+ price_qty);
+    // $(".price_options").val(price_qty);
 
-   //affichage du prix
+    event.preventDefault();
+}
+function addoptions(elem){
+    var value =  elem.value;
+    var id =  $(elem).data('id');
+    var price =  $(elem).data('price'+id);
+    var input =  $(elem).data('input');
+    function addoptions(elem){
+    var value =  elem.value;
+    var id =  $(elem).data('id');
+    var price =  $(elem).data('price'+id);
+    var input =  $(elem).data('input');
+    if (input > value){
+        var totaloption = value * price;
+        var total = $("#totalamount").val();
+        var finaltotal = (+total) + (+totaloption);
+        $("#total").html(finaltotal);
+        $("#totalamount").val(finaltotal);
+    }
 
-   document.getElementById('totalOption').innerHTML = tot+" €  ";
-   document.getElementById('idFinal').value = idFinal;
-   document.getElementById('prixFinal').value = tot;
-   console.log(tot)
-   total_form = (Number(document.getElementById('prix_total_vehicule_'+document.getElementById('marque_id').value).value) + Number(document.getElementById('prixLieuDepartGet').value) + Number(document.getElementById('prixLieuRetourGet').value) + Number(tot));
-   document.getElementById('finalForm').innerHTML ="Total : "+total_form+'  €' ;
- }
+}if (input > value){
+        var totaloption = value * price;
+        var total = $("#totalamount").val();
+        var finaltotal = (+total) + (+totaloption);
+        $("#total").html(finaltotal);
+        $("#totalamount").val(finaltotal);
+    }
 
-};
+}
 //fonction suprresion nameOptionPost par name
 function arrayUnset(array, value){
   array.splice(array.indexOf(value), 1);
 }
-
-function removeOption(id){
-  var option_id = $('#id_option'+id).val();
-  //bloquage a l'entrée
-  var optionIntput = $('#nameOp'+id+'').val();
-  if (optionIntput === undefined) {
-    console.log("Entrée bloquée");
-  }else{
-  //ISDALY LOGIC
-  var isDaily = document.querySelector('#isDaily'+id).value;
-  var days = document.querySelector('#days').value;
-  //name remouve -> supprime li sur checkoutCard
-  var nameRemove = $('#nameOp'+id);
-  nameRemove.remove();
-  // Retire les input hidden
-  var hiddenInput_finalName = $('#finalNameOp'+id);
-  hiddenInput_finalName.remove();
-  var hiddenInput_idOut = $('#id_out'+id);
-  hiddenInput_idOut.remove();
-
-  //Retire element tableau optionNames=[];
-  var namOptionPost = document.querySelector('#name_'+id);
-  arrayUnset(optionNames,namOptionPost.value);
-
-
-  //Retire l'id du tab idFinal
-  //id_out
-  var id_out = document.querySelector('#id_out'+id);
-  //arrayUnset(idFinal,id_out.value);
-  console.log("Mes ids = "+idFinal);
-
-  //decrementation du prix
-  var prix_option_remove = 0;
-  price = document.querySelector('#price_'+id);
-  if(isDaily == 1)
-  {
-    console.log("isDailyRemove = "+isDaily)
-    prix_option_remove = price.value *days;
-  }else{
-    prix_option_remove = price.value;
-  }
-  console.log("priceT remove : ",prix_option_remove);
-  tot-=prix_option_remove;
-  console.log("Total : ",tot);
-
-  //envoie
-  document.getElementById('totalOption').innerHTML = tot+" €  ";
-  // document.getElementById('optionNames').innerHTML = optionNames;
-  document.getElementById('idFinal').value = idFinal;
-  document.getElementById('prixFinal').value = tot;
-  total_form = (Number(document.getElementById('prix_total_vehicule_'+document.getElementById('marque_id').value).value) + Number(document.getElementById('prixLieuDepartGet').value) + Number(document.getElementById('prixLieuRetourGet').value) + Number(tot));
-  document.getElementById('finalForm').innerHTML ="Total : "+total_form+'  €' ;
-  //modifie le prix sur la vu (recap)
-  /*var testRemoveNameOp = document.getElementById('#nameOp'+id).value;
-  testRemoveNameOp.remove();*/
-  }
-};
 
 var idFinal = document.getElementById('idFinal').innerHTML = idFinal;
 console.log(idFinal);
@@ -359,27 +329,7 @@ function modeleid(id){
    $('#selectveh_'+id).removeClass('hidden');
 
 }
-function carselect(elem){
-    var rate_per_day =  elem.value;
-    var days = $("#days").val();
-    var total = days *rate_per_day;
-    $("#total").html(total);
-    $("#totalamount").val(total);
-}
-function addoptions(elem){
-    var value =  elem.value;
-    var id =  $(elem).data('id');
-    var price =  $(elem).data('price'+id);
-    var input =  $(elem).data('input');
-    if (input > value){
-        var totaloption = value * price;
-        var total = $("#totalamount").val();
-        var finaltotal = (+total) + (+totaloption);
-        $("#total").html(finaltotal);
-        $("#totalamount").val(finaltotal);
-    }
 
-}
 function addgurantee(elem){
     var value =  elem.value;
     var id =  $(elem).data('id');
@@ -398,85 +348,15 @@ function vehiculeid(id){
 }
 function calc1()
 {
-  //var nom_vehicule = document.querySelector('#nom_vehicule').value;
-  // var marque_vehicule = document.querySelector('#marque_vehicule').value;
 
-  var days = document.querySelector('#days').value;
-  //console.log("days : " + days);
-  var id = document.querySelector('#marque_id').value;
-  var prix_total_vehicule = document.querySelector('#prix_total_vehicule_'+id).value;
-  var prix_vehicule_journee = prix_total_vehicule/days;
-  total_form = (Number(prix_total_vehicule) + Number(document.getElementById('prixLieuDepartGet').value) + Number(document.getElementById('prixLieuRetourGet').value));
-  console.log('voiture / days = ' + total_form);
-  //document.getElementById('finalForm').innerHTML ="Total : "+total_form+'  €' ;
-  document.getElementById('titre_page').innerHTML = 'Choix des Options';
-  //document.getElementById('nom_modele_vehicule').innerHTML = document.querySelector('#nom_vehicule_'+id).value;
 }
 function calc2()
 {
-  var totalOption = document.querySelector('#prixFinal').value;
-  if (totalOption == "") {
-    totalOption = 0;
-  }
-  total_form += parseFloat(totalOption);
-  console.log('option :' +totalOption);
-  //document.getElementById('finalForm').innerHTML ="Total : "+total_form+'  €' ;
-  document.getElementById('titre_page').innerHTML = 'Choix des Garantie';
+
 }
 
 function calcul()
 {
-  var id = document.querySelector('#marque_id').value;
-  var prix_total_vehicule = document.querySelector('#prix_total_vehicule_'+id).value;
-  var totalOption_out = document.querySelector('#prixFinal').value;
-  var totalGarantie = document.querySelector('#prixFinalGarantie').value;
-  var totalform = Number(prix_total_vehicule) + Number(totalOption_out) + Number(totalGarantie) + Number(document.getElementById('prixLieuDepartGet').value) + Number(document.getElementById('prixLieuRetourGet').value);
-  document.querySelector('#TotalTTC').value = totalform;
-
-  var option_ids = document.querySelector('#idFinal').value;
-  var id_conducteur_supp = 1;
-  for(var y = 0 ; y<= option_ids.length; y++)
-  {
-    if(option_ids[y] == 2){
-      console.log("id_optionIds = "+option_ids[y]);
-      var form_conducteur_supp =
-        '<br>\
-        <h2 class="fs-title col-md-12" style="margin: 50px auto;">Infos Conducteur Supplementaire N° '+id_conducteur_supp+'</h2>\
-        <div class="col-md-4">\
-          <label>Nom\
-          <input type="text" class="form-control" id="nom_supp'+id_conducteur_supp+'" name="nom'+id_conducteur_supp+'" required> </label>\
-        </div>\
-        <div class="col-md-4">\
-          <label>Prénom\
-          <input type="text" class="form-control" id="prenom_supp'+id_conducteur_supp+'" name="prenom'+id_conducteur_supp+'" required> </label>\
-        </div>\
-        <div class="col-md-4">\
-          <label>N° Permis\
-          <input type="number" class="form-control" id="numero_permis_supp'+id_conducteur_supp+'" name="numero_permis'+id_conducteur_supp+'" required> </label>\
-        </div>\
-        <div class="col-md-6">\
-          <label>Date Délivrance \
-          <input type="date" class="form-control" id="date_delivrance_supp'+id_conducteur_supp+'" name="date_delivrance'+id_conducteur_supp+'" required> </label>\
-        </div>\
-        <div class="col-md-6">\
-          <label>Lieu de Délivrance\
-          <input type="text" class="form-control" id="lieu_delivrance_supp'+id_conducteur_supp+'" name="lieu_delivrance'+id_conducteur_supp+'" required> </label>\
-        </div>'
-        $('.list-unstyled').append(form_conducteur_supp);
-        id_conducteur_supp ++
-    }
-  }
-  $('.nb_conducteurs').append('<input type="hidden" id="nb_conducteurs" name="nb_conducteurs" value ="'+id_conducteur_supp+'">');
-
-  if (totalGarantie == "") {
-   totalGarantie = 0;
-  }
-  //total_form += parseFloat(totalGarantie);
-  //console.log('Garantie :' +totalGarantie);
-  document.getElementById('finalForm').innerHTML ="Total : "+totalform+'  €' ;
-  // document.getElementById('total_p').innerHTML =total_form+'  €' ;
-
-  document.getElementById('titre_page').innerHTML = 'Infos Client';
 }
 function moyenPaiementGet(gateway)
 {
@@ -486,184 +366,6 @@ function moyenPaiementGet(gateway)
 
 function recap()
 {
-  $('#nav_step').hide();
-  // var nameOp_out = document.querySelector('#nameOp').value;
-  var days_out = document.querySelector('#days').value;
-  console.log("days_out_recap "+days_out);
-  var finalForm_out = document.querySelector('#finalForm').value;
-  // var prix_lieu_depart_out = document.querySelector('#prix_lieu_depart').value;
-  // var prix_lieu_retour_out = document.querySelector('#prix_lieu_retour').value;
-  var totalOption_out = document.querySelector('#prixFinal').value;
-  var totalGarantie_out = document.querySelector('#prixFinalGarantie').value;
-  var prenom = document.querySelector('#prenom').value;
-  var nom = document.querySelector('#nom').value;
-  var numero_permis = document.querySelector('#numero_permis').value;
-  var adresse = document.querySelector('#adresse').value;
-  var ville = document.querySelector('#ville').value;
-  var cpostal = document.querySelector('#cpostal').value;
-  var pays = document.querySelector('#pays').value;
-  var telephone = document.querySelector('#telephone').value;
-  var email = document.querySelector('#email').value;
-  var nb_adultes = document.querySelector('#nb_adultes').value;
-  var nb_enfants = document.querySelector('#nb_enfants').value;
-  var nb_bebes = document.querySelector('#nb_bebes').value;
-  var infos_internes = document.querySelector('#infos_internes').value;
-  var prix_sur_place = document.querySelector('#prix_sur_place').value;
-  console.log('prix_sur_place = '+prix_sur_place);
-
-  if(prix_sur_place != null)
-  {
-    var reste_a_payer = total_form - prix_sur_place;
-    console.log(total_form);
-    document.getElementById('prix_sur_place_out').innerHTML = prix_sur_place +' €';
-    //
-    var reste_a_payer_out = $('<strong style="position: relative;left: -5px;">Reste à payer</strong><span>'+reste_a_payer+ ' €</span>');
-    $('#reste_a_payer').append(reste_a_payer_out);
-  }else{
-    $("#div_paiement_sur_place").attr("style","display: none;")
-    $("#div_reste_a_payer").attr("style","display: none;")
-  }
-  ////////////////////
-  var gateway = document.querySelector('#gatewayGet').innerHTML;
-  // var mode_paiement = document.querySelector('#paiement').value;
-   console.log(gateway);
-  /////////
-  // console.log('nom_gateway = '+gateway);
-  //  if (mode_paiement == 0) {
-  //    mode_paiement = "paiement de la totalité de la commande"
-  //  }else
-  //   {
-  //    mode_paiement = "paiement de 30% de la commande ("+ total_form*0.3 +") maintenant , puis "+ total_form - (total_form*0.3)+"lors de la recuperation du vehicule";
-  //   }
-  // console.log(mode_paiement);
-  // $('#total_p').append(finalForm_out);
-
-  var show_total_option = $('<strong style="position: relative;left: -5px;">TOTAL</strong><span>'+totalOption_out+ ' €</span>');
-  $('#totalOption_out').append(show_total_option);
-  var show_total_garantie = $('<strong style="position: relative;left: -5px;">TOTAL</strong><span>'+totalGarantie_out+ ' €</span>');
-  $('#totalGarantie_out').append(show_total_garantie);
-  var totalTTC = $('<strong style="position: relative;left: -5px;">TOTAL TTC</strong><span>'+total_form+ ' €</span>');
-  $('#total_TTC').append(totalTTC);
-
-  var tab_out = $('\
-  <tr>\
-    <td>\
-      <strong class="float-left">Nom</strong>\
-        <div class="float-right">'+nom+'</div>\
-    </td>\
-      <td></td>\
-  </tr>\
-  <tr>\
-    <td>\
-      <strong class="float-left">Prénom</strong>\
-      <div class="float-right">'+prenom+'</div>\
-      </td><td>\
-    </td>\
-  </tr>\
-  <tr>\
-    <td>\
-      <strong class="float-left">Email</strong>\
-      <div class="float-right">'+email+'</div>\
-      </td><td>\
-    </td>\
-  </tr>\
-  <tr>\
-    <td>\
-      <strong class="float-left">Téléphone</strong>\
-      <div class="float-right">'+telephone+'</div>\
-      </td><td>\
-    </td>\
-  </tr>\
-  <tr>\
-    <td>\
-      <strong class="float-left">Adresse</strong>\
-      <div class="float-right">'+adresse+ ' '+ville +' '+cpostal+' '+pays+'</div>\
-      </td><td>\
-    </td>\
-  </tr>\
-  <tr>\
-    <td>\
-      <strong class="float-left">Information supplementaires</strong>\
-      <div class="float-right">'+infos_internes+'</div>\
-    </td>\
-    <td></td>\
-  </tr>');
-  $('#info_client_tab').append(tab_out);
-
-  //Test recuperation conducteur supp
-  var max_conducteur_supp = document.querySelector('#nb_conducteurs').value
-  console.log("Max SUPP = "+max_conducteur_supp)
-  if(max_conducteur_supp !=null)
-  {
-    for(var s=1 ; s<=max_conducteur_supp-1; s++)
-    {
-      $('#HaveSupp').append('\
-      <div class="col-md-6">\
-        <div class="card" style="margin-bottom: 20px;">\
-          <div class="card-body">\
-            <div class="block">\
-              <h4 class="headrer-title"> Conducteur supplementaire(s) N°'+s+'</h4>\
-              <div class="table-responsive">\
-                <table class="table mb-0">\
-                  <tbody id="recap_supp">\
-                    <tr>\
-                      <td>\
-                        <strong class="float-left">Nom</strong>\
-                        <div class="float-right">'+document.querySelector('#nom_supp'+s).value+'</div>\
-                    </td>\
-                    <td></td>\
-                    </tr>\
-                    <tr>\
-                      <td>\
-                        <strong class="float-left">Prenom</strong>\
-                        <div class="float-right">'+document.querySelector('#prenom_supp'+s).value+'</div>\
-                    </td>\
-                    <td></td>\
-                    </tr>\
-                    <tr>\
-                      <td>\
-                        <strong class="float-left">N° permis</strong>\
-                        <div class="float-right">'+document.querySelector('#numero_permis_supp'+s).value+'</div>\
-                    </td>\
-                    <td></td>\
-                    </tr>\
-                    <tr>\
-                      <td>\
-                        <strong class="float-left">Date de délivrance</strong>\
-                        <div class="float-right">'+document.querySelector('#date_delivrance_supp'+s).value+'</div>\
-                      </td>\
-                      <td></td>\
-                    </tr>\
-                    <tr>\
-                      <td>\
-                        <strong class="float-left">Lieu de délivrance</strong>\
-                        <div class="float-right">'+document.querySelector('#lieu_delivrance_supp'+s).value+'</div>\
-                      </td>\
-                      <td></td>\
-                    </tr>\
-                </tbody>\
-                </table>\
-              </div>\
-            </div>\
-          </div>\
-        </div>\
-      </div>\
-        '
-      )
-    }
-  }
-  else{
-    $("#HaveSupp").attr("style","display: none;")
-  }
-
-
-  document.getElementById('moyen_paiement').innerHTML = gateway;
-  // document.getElementById('mode_paiement').innerHTML = mode_paiement;
-  document.getElementById('days_out').innerHTML = days_out + ' Jours';
-
-
-  document.getElementById('totalTTC_controller').value = total_form;
-
 }
 
 

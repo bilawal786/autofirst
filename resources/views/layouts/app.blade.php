@@ -30,6 +30,7 @@
 
     <style>.pagination-info{display:none;} .table-responsive, #calendar{padding: 10px;} td, .th-inner{text-align: center;}</style>
     @stack('styles')
+
 </head>
 
 <body>

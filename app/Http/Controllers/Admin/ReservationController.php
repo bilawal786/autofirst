@@ -8,11 +8,13 @@ use App\Content;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeasonResource;
+use App\Mail\Facture;
 use App\Option;
 use App\Reservation;
 use App\Season;
 use App\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use PDF;
 class ReservationController extends Controller
 {
@@ -38,6 +40,8 @@ class ReservationController extends Controller
     public function store(Request $request){
 //        dd($request->all());
        $reservation = new Reservation();
+        $reservation->end_price = $request->end_price;
+        $reservation->start_price = $request->start_price;
         $reservation->start_point = $request->start_point;
         $reservation->end_point = $request->end_point;
         $reservation->departure_date = $request->date_depart;
@@ -66,6 +70,7 @@ class ReservationController extends Controller
         $reservation->vehicle_id = $request->vehicle_id;
         $reservation->flight_no = $request->flight_no;
         $reservation->payment_method = $request->payment_method;
+        $reservation->rate_per_day = $request->rate_per_day;
 
         if($request->options){
             foreach($request->options as $option)
@@ -96,6 +101,34 @@ class ReservationController extends Controller
             }
         }
         $reservation->save();
+
+        $data['data'] = Reservation::find($reservation->id);
+        $data['gs'] = Content::find(1);
+
+
+        $destinationPath = 'records';
+        $taxform_name = 'facture-'.$reservation->id.'.pdf';
+        $filepath = $destinationPath.'/'.$taxform_name;
+        $pdf = PDF::loadView('pdf.invoice',$data);
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->stream();
+        file_put_contents($filepath, $pdf->output());
+
+
+        $destinationPath1 = 'records';
+        $taxform_name1 = 'contract-'.$reservation->id.'.pdf';
+        $filepath1 = $destinationPath1.'/'.$taxform_name1;
+        $pdf1 = PDF::loadView('pdf.contract',$data);
+        $pdf1->setPaper('A4', 'portrait');
+        $pdf1->stream();
+        file_put_contents($filepath1, $pdf1->output());
+
+
+        $reservation->invoice_link = $filepath;
+        $reservation->contract_link = $filepath1;
+        $reservation->update();
+
+        Mail::to($reservation->email)->send(new Facture($reservation));
         $notification = array(
             'messege' => 'Ajouté avec succès!',
             'alert-type' => 'success'

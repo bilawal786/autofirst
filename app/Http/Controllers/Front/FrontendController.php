@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Front;
 
 use App\Agency;
 use App\Category;
+use App\Content;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeasonResource;
+use App\Mail\Contract;
+use App\Mail\Facture;
 use App\Option;
 use App\Reservation;
 use App\Season;
@@ -14,7 +17,8 @@ use App\Vehicle;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use PDF;
 class FrontendController extends Controller
 {
     public function index(){
@@ -111,7 +115,64 @@ class FrontendController extends Controller
             }
         }
         $reservation->save();
+
+        $data['data'] = Reservation::find($reservation->id);
+        $data['gs'] = Content::find(1);
+
+
+        $destinationPath = 'records';
+        $taxform_name = 'facture-'.$reservation->id.'.pdf';
+        $filepath = $destinationPath.'/'.$taxform_name;
+        $pdf = PDF::loadView('pdf.invoice',$data);
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->stream();
+        file_put_contents($filepath, $pdf->output());
+
+        $destinationPath1 = 'records';
+        $taxform_name1 = 'contract-'.$reservation->id.'.pdf';
+        $filepath1 = $destinationPath1.'/'.$taxform_name1;
+        $pdf1 = PDF::loadView('pdf.contract',$data1);
+        $pdf1->setPaper('A4', 'portrait');
+        $pdf1->stream();
+        file_put_contents($filepath1, $pdf1->output());
+
+
+        $reservation->invoice_link = $filepath;
+        $reservation->contract_link = $filepath1;
+        $reservation->update();
+
+        Mail::to($reservation->email)->send(new Facture($reservation));
         return redirect()->route('payment.success');
 
+    }
+
+    public function signature($id){
+        return view('front.signature', compact('id'));
+    }
+    public function signatureSubmit(Request $request){
+        $folderPath = public_path('allimages/');
+
+        $image_parts = explode(";base64,", $request->signed);
+
+        $image_type_aux = explode("image/", $image_parts[0]);
+
+        $image_type = $image_type_aux[1];
+
+        $image_base64 = base64_decode($image_parts[1]);
+
+        $signature = uniqid() . '.'.$image_type;
+
+        $file = $folderPath . $signature;
+
+        file_put_contents($file, $image_base64);
+
+        $reservation = Reservation::find($request->id);
+        $reservation->signature = "allimages/".$signature;
+        $reservation->save();
+
+        Mail::to($reservation->email)->send(new Contract($reservation));
+
+        $request->session()->flash('alert-success', 'Votre signature a été envoyée avec succès. Vérifiez votre e-mail pour les détails du contrat');
+        return redirect()->back();
     }
 }

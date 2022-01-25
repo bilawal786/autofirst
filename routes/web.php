@@ -19,6 +19,9 @@ Route::post('/find/car', 'Front\FrontendController@findCar')->name('front.find.c
 Route::post('/booking/submit', 'Front\FrontendController@booking')->name('booking.submit');
 Route::get('/payment/success', 'Front\FrontendController@success')->name('payment.success');
 
+Route::get('/signature/{id}', 'Front\FrontendController@signature')->name('signature');
+Route::post('/signature/submit', 'Front\FrontendController@signatureSubmit')->name('signature.submit');
+
 Auth::routes();
 
 Route::prefix('admin')->group(function () {

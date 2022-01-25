@@ -83,6 +83,36 @@
         <td align="right">{{$end_agency->price}}€</td>
         <td align="right">{{$end_agency->price}}€</td>
     </tr>
+    @if($data->options)
+        <?php
+        $op = json_decode($data->options);
+        ?>
+        @foreach(json_decode($data->options_id) as $key => $item)
+            <?php
+            $option = \App\Option::find($item);
+            ?>
+            <tr>
+                <td>  {{$option->name}}</td>
+                <td align="right">{{$option->price}}€</td>
+                <td align="right"> {{$option->price * $op[$key]}}€</td>
+            </tr>
+        @endforeach
+    @endif
+    @if($data->gurantee)
+        <?php
+        $op = json_decode($data->gurantee);
+        ?>
+        @foreach(json_decode($data->gurantee_id) as $key => $item)
+            <?php
+            $option = \App\Gurantee::find($item);
+            ?>
+            <tr>
+                <td>  {{$option->name}}</td>
+                <td align="right">{{$option->price}}€</td>
+                <td align="right"> {{$option->price * $op[$key]}}€</td>
+            </tr>
+        @endforeach
+    @endif
     <tr>
         <td align="left">Reservation du
             vehicule {{$data->vehicle->marque->name??''}} {{$data->vehicle->modal->name??''}} Du

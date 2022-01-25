@@ -74,6 +74,13 @@
                                                                 <option value="0">Désactiver</option>
                                                             </select>
                                                         </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="status" class="col-form-label">Facturable à la journée</label>
+                                                            <select name="per_day" id="status" class="form-control">
+                                                                <option value="Oui">Oui</option>
+                                                                <option value="Non">Non</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -149,6 +156,13 @@
                                                                         <select name="status" id="status" class="form-control">
                                                                             <option value="1" @if($option->status == "1") selected @endif>Activer</option>
                                                                             <option value="0" @if($option->status == "0") selected @endif>Désactiver</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="status" class="col-form-label">Facturable à la journée</label>
+                                                                        <select name="per_day" id="status" class="form-control">
+                                                                            <option @if($option->per_day == "Oui") selected @endif value="Oui">Oui</option>
+                                                                            <option @if($option->per_day == "Non") selected @endif value="Non">Non</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
