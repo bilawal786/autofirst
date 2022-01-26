@@ -141,7 +141,7 @@ class FrontendController extends Controller
         return view('front.signature', compact('id'));
     }
     public function signatureSubmit(Request $request){
-        $folderPath = public_path('allimages/');
+        $folderPath = 'allimages/';
 
         $image_parts = explode(";base64,", $request->signed);
 
@@ -165,13 +165,15 @@ class FrontendController extends Controller
         $data['data'] = Reservation::find($reservation->id);
         $data['gs'] = Content::find(1);
 
-        $destinationPath1 = 'records';
-        $taxform_name1 = 'contract-'.$reservation->id.'.pdf';
-        $filepath1 = $destinationPath1.'/'.$taxform_name1;
-        $pdf1 = PDF::loadView('pdf.contract',$data);
-        $pdf1->setPaper('A4', 'portrait');
-        $pdf1->stream();
-        file_put_contents($filepath1, $pdf1->output());
+        $destinationPath = 'contract';
+        $taxform_name = 'contract-'.$reservation->id.'.pdf';
+        $filepath = $destinationPath.'/'.$taxform_name;
+        $pdf = PDF::loadView('pdf.contract',$data);
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->stream();
+        file_put_contents($filepath, $pdf->output());
+
+        $reservation->contract_link = $filepath;
 
         Mail::to($reservation->email)->send(new Contract($reservation));
 

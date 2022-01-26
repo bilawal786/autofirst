@@ -91,11 +91,13 @@
             <?php
             $option = \App\Option::find($item);
             ?>
+            @if($op[$key] > 0)
             <tr>
                 <td>  {{$option->name}}</td>
                 <td align="right">{{$option->price}}€</td>
-                <td align="right"> {{$option->price * $op[$key]}}€</td>
+                <td align="right"> {{$option->price * $op[$key]}}€ </td>
             </tr>
+            @endif
         @endforeach
     @endif
     @if($data->gurantee)
@@ -106,11 +108,13 @@
             <?php
             $option = \App\Gurantee::find($item);
             ?>
+            @if($op[$key] > 0)
             <tr>
                 <td>  {{$option->name}}</td>
                 <td align="right">{{$option->price}}€</td>
                 <td align="right"> {{$option->price * $op[$key]}}€</td>
             </tr>
+            @endif
         @endforeach
     @endif
     <tr>

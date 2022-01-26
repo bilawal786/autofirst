@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <p>Max: {{$option->max_input}}</p>
-                                            <input oninput="addoptions(this)" onchange="addoptions(this)" name="options[]" value="" data-id="{{$option->id}}" data-input="{{$option->max_input}}" min="0" data-price{{$option->id}}="{{$option->price}}" max="{{$option->max_input}}" type="number" class="form-control">
+                                            <input oninput="addoptions(this)" onchange="addoptions(this)" name="options[]" value="0" data-id="{{$option->id}}" data-input="{{$option->max_input}}" min="0" data-price{{$option->id}}="{{$option->price}}" max="{{$option->max_input}}" type="number" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <p>Max: {{$optio->max_input}}</p>
-                                            <input onchange="addgurantee(this)" oninput="addgurantee(this)" type="number" value="" name="gurantee[]" data-input="{{$optio->max_input}}" data-id="{{$optio->id}}" min="0" data-price{{$optio->id}}="{{$optio->price}}" max="{{$optio->max_input}}" class="form-control">
+                                            <input onchange="addgurantee(this)" oninput="addgurantee(this)" type="number" value="0" name="gurantee[]" data-input="{{$optio->max_input}}" data-id="{{$optio->id}}" min="0" data-price{{$optio->id}}="{{$optio->price}}" max="{{$optio->max_input}}" class="form-control">
                                         </div>
                                     </div>
                                 </div>

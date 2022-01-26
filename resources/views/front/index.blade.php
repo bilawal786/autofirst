@@ -214,7 +214,7 @@
                                 <div class="image-sec animate-img"> <a href="#"> <img src="{{asset($vehicle->image)}}" class="full-width" alt="img"> </a> </div>
                                 <div class="car-grid-caption padding-20 bg-custom-white p-relative">
                                     <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$vehicle->marque->name??'Supreme'}} {{$vehicle->modal->name??'Supreme'}} <small class="text-light-dark">Par jour</small></a></h4>
-                                    <span class="price"><small>From</small>20 €</span>
+                                    <span class="price"><small>Prix</small>20 €</span>
                                 </div>
                             </div>
                         </div>
