@@ -34,8 +34,8 @@
                         start: "{{$rese->departure_date}}",
                         end: "{{$rese->return_date}}",
                         url: "/admin/show/reservation/{{$rese->id}}",
-                        backgroundColor: "{{$rese->vehicle->color}}",
-                        borderColor: "{{$rese->vehicle->color}}",
+                        backgroundColor: "{{$rese->vehicle->color??'#fff'}}",
+                        borderColor: "{{$rese->vehicle->color??'#fff'}}",
                     },
                     @endforeach
                 ]
