@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{asset('signature/js/jquery.signature.js')}}"></script>
+    <script src="{{asset('ignature/js/jquery.ui.touch-punch.min.js')}}"></script>
     <script>
         $(function() {
             var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
@@ -35,6 +36,7 @@
             });
         });
     </script>
+    <script>$('#sig').draggable();</script>
 </head>
 <body>
 <div class="flash-message">
