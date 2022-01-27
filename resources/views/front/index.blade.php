@@ -70,7 +70,7 @@
                                                         <label class="fs-14 text-custom-black fw-500">Date de départ</label>
                                                         <div required="" class="input-group group-form">
                                                             <input type="date" name="departure_date" id="departure_date" class="form-control form-control-custom" placeholder="jj/mm/aaaa" required>
-                                                            <span class="input-group-append"> <i class="far fa-calendar"></i> </span> </div>
+                                                            </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -123,7 +123,7 @@
                                                         <label class="fs-14 text-custom-black fw-500"> Date de retour </label>
                                                         <div class="input-group group-form">
                                                             <input required="" type="date" name="return_date" class="form-control form-control-custom" placeholder="jj/mm/aaaa" required>
-                                                            <span class="input-group-append"> <i class="far fa-calendar"></i> </span> </div>
+                                                            </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
