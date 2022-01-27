@@ -85,6 +85,7 @@ class FrontendController extends Controller
         $reservation->end_price = $request->end_price;
         $reservation->rate_per_day = $request->rate_per_day;
         $reservation->payment_method = "Paiement via le site Web en ligne";
+        $reservation->status = 0;
 
         if($request->options){
             foreach($request->options as $option)
@@ -116,6 +117,20 @@ class FrontendController extends Controller
         }
         $reservation->save();
 
+        return redirect()->route('front.booking.confirm', ['id' => $reservation->id]);
+
+    }
+
+    public function bookingConfirm($id){
+        $reservation = Reservation::find($id);
+        return view('front.confirmBooking', compact('reservation'));
+    }
+    public function confirmReservation(Request $request, $id){
+        $reservation = Reservation::find($id);
+        $reservation->totalamount = $request->final;
+        $reservation->status = 1;
+        $reservation->update();
+
         $data['data'] = Reservation::find($reservation->id);
         $data['gs'] = Content::find(1);
 
@@ -133,10 +148,8 @@ class FrontendController extends Controller
         $reservation->update();
 
         Mail::to($reservation->email)->send(new Facture($reservation));
-        return redirect()->route('payment.success');
-
+        return view('front.success');
     }
-
     public function signature($id){
         return view('front.signature', compact('id'));
     }

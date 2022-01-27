@@ -19,7 +19,7 @@ use PDF;
 class ReservationController extends Controller
 {
     public function reservations(){
-        $reservations = Reservation::latest()->get();
+        $reservations = Reservation::latest()->where('status', 1)->get();
         return view('admin.reservation.index', compact('reservations'));
     }
     public function direct(){
@@ -71,6 +71,7 @@ class ReservationController extends Controller
         $reservation->flight_no = $request->flight_no;
         $reservation->payment_method = $request->payment_method;
         $reservation->rate_per_day = $request->rate_per_day;
+        $reservation->status = 0;
 
         if($request->options){
             foreach($request->options as $option)
@@ -102,6 +103,19 @@ class ReservationController extends Controller
         }
         $reservation->save();
 
+        return redirect()->route('confirm.booking', ['id' => $reservation->id]);
+
+    }
+    public function confirmBooking($id){
+        $reservation = Reservation::find($id);
+        return view('admin.reservation.confirmBooking', compact('reservation'));
+    }
+    public function confirmReservation(Request $request, $id){
+        $reservation = Reservation::find($id);
+        $reservation->totalamount = $request->final;
+        $reservation->status = 1;
+        $reservation->update();
+
         $data['data'] = Reservation::find($reservation->id);
         $data['gs'] = Content::find(1);
 
@@ -122,15 +136,14 @@ class ReservationController extends Controller
             'messege' => 'Ajouté avec succès!',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification);
-
+        return redirect()->route('admin.reservations')->with($notification);
     }
     public function show($id){
         $reservation = Reservation::find($id);
         return view('admin.reservation.show', compact('reservation'));
     }
     public function calender(){
-        $reservations = Reservation::latest()->get();
+        $reservations = Reservation::latest()->where('status', 1)->get();
         return view('admin.reservation.calender', compact('reservations'));
     }
     public function reservationsDelete($id){

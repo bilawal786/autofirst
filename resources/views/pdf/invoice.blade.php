@@ -102,17 +102,17 @@
     @endif
     @if($data->gurantee)
         <?php
-        $op = json_decode($data->gurantee);
+        $op1 = json_decode($data->gurantee);
         ?>
-        @foreach(json_decode($data->gurantee_id) as $key => $item)
+        @foreach(json_decode($data->gurantee_id) as $key1 => $item1)
             <?php
-            $option = \App\Gurantee::find($item);
+            $option1 = \App\Gurantee::find($item1);
             ?>
-            @if($op[$key] > 0)
+            @if($op1[$key1] > 0)
             <tr>
-                <td>  {{$option->name}}</td>
-                <td align="right">{{$option->price}}€</td>
-                <td align="right"> {{$option->price * $op[$key]}}€</td>
+                <td>  {{$option1->name}}</td>
+                <td align="right">{{$option1->price}}€</td>
+                <td align="right"> {{$option1->price * $op1[$key1]}}€</td>
             </tr>
             @endif
         @endforeach

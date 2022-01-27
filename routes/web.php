@@ -18,6 +18,8 @@ Route::get('/contact', 'Front\FrontendController@contact')->name('front.contact'
 Route::post('/find/car', 'Front\FrontendController@findCar')->name('front.find.car');
 Route::post('/booking/submit', 'Front\FrontendController@booking')->name('booking.submit');
 Route::get('/payment/success', 'Front\FrontendController@success')->name('payment.success');
+Route::get('/front/booking/confirm/{id}', 'Front\FrontendController@bookingConfirm')->name('front.booking.confirm');
+Route::post('/front/reservation/confirm/{id}', 'Front\FrontendController@confirmReservation')->name('front.reservation.confirm');
 
 Route::get('/signature/{id}', 'Front\FrontendController@signature')->name('signature');
 Route::post('/signature/submit', 'Front\FrontendController@signatureSubmit')->name('signature.submit');
@@ -82,6 +84,8 @@ Route::prefix('admin')->group(function () {
          Route::get('/admin/calender', 'Admin\ReservationController@calender')->name('admin.calender');
          Route::post('/reservation/store', 'Admin\ReservationController@store')->name('reservation.store');
          Route::get('/json', 'Admin\ReservationController@json')->name('json');
+         Route::get('/confirm/booking/{id}', 'Admin\ReservationController@confirmBooking')->name('confirm.booking');
+         Route::post('/reservation/confirm{id}', 'Admin\ReservationController@confirmReservation')->name('reservation.confirm');
 
          Route::get('/contract/create/{id}', 'Admin\ReservationController@contract')->name('contract.create');
          Route::get('/invoice/create/{id}', 'Admin\ReservationController@invoice')->name('invoice.create');

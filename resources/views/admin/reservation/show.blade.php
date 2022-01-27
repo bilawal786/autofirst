@@ -232,17 +232,17 @@
                                             <?php
                                             $option = \App\Option::find($item);
                                             ?>
-                                        <tr>
-                                            <td>
-                                              {{$option->name}}
-                                            </td>
-                                            <td>
-                                              {{$op[$key]}}
-                                            </td>
-{{--                                            <td>--}}
-{{--                                                {{$option->price * $op[$key]}} €--}}
-{{--                                            </td>--}}
-                                        </tr>
+                                            <tr>
+                                                <td>
+                                                  {{$option->name}}
+                                                </td>
+                                                <td>
+                                                  {{$op[$key]}}
+                                                </td>
+    {{--                                            <td>--}}
+    {{--                                                {{$option->price * $op[$key]}} €--}}
+    {{--                                            </td>--}}
+                                            </tr>
                                         @endforeach
                                         </tbody>
                                     </table>

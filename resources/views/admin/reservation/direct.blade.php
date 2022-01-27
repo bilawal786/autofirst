@@ -4,7 +4,7 @@
         <div class="page-content">
             <!-- end page title end breadcrumb -->
             <div class="card" style="margin-bottom: 20px;">
-                <h3 style="text-align: center">Total Price  : <b id="total">0</b> €</h3>
+{{--                <h3 style="text-align: center">Total Price  : <b id="total">0</b> €</h3>--}}
                 <div class="card-body">
                     <div class="stepwizard">
                         <div class="stepwizard-row setup-panel">
@@ -729,7 +729,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="display: none">
                                                 <div class="form-group">
                                                     <label class="control-label col-form-label">Montant</label>
                                                     <div class="input-group">
