@@ -1234,7 +1234,6 @@
             </tr>
         </table>
     </div>
-    <img src="{{asset($data->signature)}}" width="115" height="115" align="right" alt=""/>
 
     <p style="text-align:left;page-break-inside:auto;page-break-after:auto;page-break-before:avoid;line-height:normal;margin-top:0pt;margin-bottom:0pt;background-color:#FFFFFF;">
         <span
@@ -1254,5 +1253,6 @@
             style="color:#000000;font-family:Arial;font-size:8pt;text-transform:none;font-weight:normal;font-style:normal;font-variant:normal;">&#xa0;</span>
     </p>
 </div>
+<img src="{{asset($data->signature)}}" width="115" height="115" align="left" alt=""/>
 </body>
 </html>

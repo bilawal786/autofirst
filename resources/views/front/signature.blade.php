@@ -54,8 +54,8 @@
     <textarea id="signature64" name="signed" style="display: none"></textarea>
     <input type="hidden" name="id" value="{{$id}}">
     <p style="clear: both;">
-        <button id="clear">Clear</button>
-        <button type="submit">Submit</button>
+        <button id="clear">Effacer</button>
+        <button type="submit">Envoyer</button>
     </p>
 </form>
 
