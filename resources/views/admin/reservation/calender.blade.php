@@ -69,17 +69,17 @@
             var initialLocaleCode = 'fr';
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                now: '2022-01-01',
+                now: '{{\Carbon\Carbon::now()}}',
                 editable: true,
                 aspectRatio: 2.9,
                 scrollTime: '00:00',
                 locale: initialLocaleCode,
                 headerToolbar: {
-                    left: 'today prev,next',
+                    left: 'prev,next',
                     center: 'title',
-                    right: 'resourceTimelineDay,resourceTimelineTenDay,resourceTimelineMonth,resourceTimelineYear'
+                    right: 'resourceTimelineYear,resourceTimelineMonth,resourceTimelineTenDay,today'
                 },
-                initialView: 'resourceTimelineYear',
+                initialView: 'resourceTimelineMonth',
                 views: {
                     resourceTimelineDay: {
                         buttonText: ':15 fentes',
