@@ -240,7 +240,7 @@
                         </div>
                     </div>
                     <p class="pt-2">{!! $content->d1 !!}</p>
-                    <a href="{{route('front.index')}}#booking" class="btn-first btn-submit">Reserve maintenant</a> </div>
+                    <a href="{{route('front.index')}}#booking" class="btn-first btn-submit">Réserver maintenant</a> </div>
             </div>
             <div class="col-xl-5 col-lg-6">
                 <div class="about-right-side full-height">

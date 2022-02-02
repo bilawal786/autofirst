@@ -34,6 +34,7 @@
                                                     </div>
                                                     <div class="car-grid-caption padding-20 bg-custom-white p-relative">
                                                         <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$row->marque->name??'Not available'}} {{$row->modal->name??'Not available'}} ({{$row->registration??'Not available'}})<small class="text-light-dark">Par jour</small></a></h4>
+                                                        <br>
                                                         <span class="price">{{$season->price}} €</span>
                                                         <p><input name="vehicle_price" onclick="carselect(this)" id="abc{{$row->id}}" value="{{$season->price}}" type="radio" class="form-control"></p>
                                                         <input type="hidden" name="vehicle_id" value="{{$row->id}}">
