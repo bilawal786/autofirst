@@ -7,58 +7,106 @@
     <link href="{{asset('front/calender/lib/main.css')}}" rel='stylesheet' />
     <script src="{{asset('front/calender/lib/main.js')}}"></script>
     <script src="{{asset('front/calender/lib/locales-all.js')}}"></script>
+{{--    <script>--}}
+
+{{--        document.addEventListener('DOMContentLoaded', function() {--}}
+{{--            var initialLocaleCode = 'fr';--}}
+{{--            var localeSelectorEl = document.getElementById('locale-selector');--}}
+{{--            var calendarEl = document.getElementById('calendar1');--}}
+
+{{--            var calendar = new FullCalendar.Calendar(calendarEl, {--}}
+{{--                headerToolbar: {--}}
+{{--                    left: 'prev,next today',--}}
+{{--                    center: 'title',--}}
+{{--                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'--}}
+{{--                },--}}
+{{--                initialDate: '2022-01-01',--}}
+{{--                locale: initialLocaleCode,--}}
+{{--                buttonIcons: false, // show the prev/next text--}}
+{{--                weekNumbers: true,--}}
+{{--                navLinks: true, // can click day/week names to navigate views--}}
+{{--                editable: true,--}}
+{{--                dayMaxEvents: true, // allow "more" link when too many events--}}
+{{--                events: [--}}
+{{--                    @foreach($reservations as $rese)--}}
+{{--                    {--}}
+{{--                        title: "{{$rese->fname.' '.$rese->lname}}, {{$rese->vehicle->marque->name??'Supreme'}}, {{$rese->vehicle->modal->name??'Supreme'}}, {{$rese->vehicle->registration??'Supreme'}}",--}}
+{{--                        start: "{{$rese->departure_date}}",--}}
+{{--                        end: "{{$rese->return_date}}",--}}
+{{--                        url: "/admin/show/reservation/{{$rese->id}}",--}}
+{{--                        backgroundColor: "{{$rese->vehicle->color??'#000000'}}",--}}
+{{--                        borderColor: "{{$rese->vehicle->color??'#000000'}}",--}}
+{{--                    },--}}
+{{--                    @endforeach--}}
+{{--                ]--}}
+{{--            });--}}
+
+{{--            calendar.render();--}}
+
+{{--            // build the locale selector's options--}}
+{{--            calendar.getAvailableLocaleCodes().forEach(function(localeCode) {--}}
+{{--                var optionEl = document.createElement('option');--}}
+{{--                optionEl.value = localeCode;--}}
+{{--                optionEl.selected = localeCode == initialLocaleCode;--}}
+{{--                optionEl.innerText = localeCode;--}}
+{{--                localeSelectorEl.appendChild(optionEl);--}}
+{{--            });--}}
+
+{{--            // when the selected option changes, dynamically change the calendar option--}}
+{{--            localeSelectorEl.addEventListener('change', function() {--}}
+{{--                if (this.value) {--}}
+{{--                    calendar.setOption('locale', this.value);--}}
+{{--                }--}}
+{{--            });--}}
+
+{{--        });--}}
+
+{{--    </script>--}}
     <script>
 
         document.addEventListener('DOMContentLoaded', function() {
-            var initialLocaleCode = 'fr';
-            var localeSelectorEl = document.getElementById('locale-selector');
             var calendarEl = document.getElementById('calendar1');
+            var initialLocaleCode = 'fr';
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                },
-                initialDate: '2022-01-01',
-                locale: initialLocaleCode,
-                buttonIcons: false, // show the prev/next text
-                weekNumbers: true,
-                navLinks: true, // can click day/week names to navigate views
+                now: '2022-01-01',
                 editable: true,
-                dayMaxEvents: true, // allow "more" link when too many events
+                aspectRatio: 2.9,
+                scrollTime: '00:00',
+                locale: initialLocaleCode,
+                headerToolbar: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'resourceTimelineMonth,resourceTimelineYear'
+                },
+                initialView: 'resourceTimelineYear',
+                views: {
+                    resourceTimelineDay: {
+                        buttonText: ':15 slots',
+                        slotDuration: '00:15'
+                    },
+                    resourceTimelineTenDay: {
+                        type: 'resourceTimeline',
+                        duration: { days: 10 },
+                        buttonText: '10 days'
+                    }
+                },
+                navLinks: true,
+                resourceAreaWidth: '20%',
+                resourceAreaHeaderContent: 'Véhicules',
+                resources: [
+                    @foreach($reservations as $rese)
+                    { id: "{{$rese->id}}", title: "{{$rese->vehicle->marque->name??'Supreme'}} {{$rese->vehicle->modal->name??'Supreme'}} ({{$rese->vehicle->registration??'Supreme'}})" },
+                    @endforeach
+                ],
                 events: [
                     @foreach($reservations as $rese)
-                    {
-                        title: "{{$rese->fname.' '.$rese->lname}}, {{$rese->vehicle->marque->name??'Supreme'}}, {{$rese->vehicle->modal->name??'Supreme'}}, {{$rese->vehicle->registration??'Supreme'}}",
-                        start: "{{$rese->departure_date}}",
-                        end: "{{$rese->return_date}}",
-                        url: "/admin/show/reservation/{{$rese->id}}",
-                        backgroundColor: "{{$rese->vehicle->color??'#000000'}}",
-                        borderColor: "{{$rese->vehicle->color??'#000000'}}",
-                    },
+                    { id: '1', resourceId: "{{$rese->id}}", start: "{{$rese->departure_date}}", end: "{{$rese->return_date}}", title: "{{$rese->fname.' '.$rese->lname}}" },
                     @endforeach
                 ]
             });
 
             calendar.render();
-
-            // build the locale selector's options
-            calendar.getAvailableLocaleCodes().forEach(function(localeCode) {
-                var optionEl = document.createElement('option');
-                optionEl.value = localeCode;
-                optionEl.selected = localeCode == initialLocaleCode;
-                optionEl.innerText = localeCode;
-                localeSelectorEl.appendChild(optionEl);
-            });
-
-            // when the selected option changes, dynamically change the calendar option
-            localeSelectorEl.addEventListener('change', function() {
-                if (this.value) {
-                    calendar.setOption('locale', this.value);
-                }
-            });
-
         });
 
     </script>
@@ -93,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body p-5">
+                <div class="card-body">
                     <div class="container">
                         <div id='calendar1'></div>
                     </div>
