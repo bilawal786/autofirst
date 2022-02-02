@@ -75,20 +75,20 @@
                 scrollTime: '00:00',
                 locale: initialLocaleCode,
                 headerToolbar: {
-                    left: 'prev,next',
+                    left: 'today prev,next',
                     center: 'title',
-                    right: 'resourceTimelineMonth,resourceTimelineYear'
+                    right: 'resourceTimelineDay,resourceTimelineTenDay,resourceTimelineMonth,resourceTimelineYear'
                 },
                 initialView: 'resourceTimelineYear',
                 views: {
                     resourceTimelineDay: {
-                        buttonText: ':15 slots',
+                        buttonText: ':15 fentes',
                         slotDuration: '00:15'
                     },
                     resourceTimelineTenDay: {
                         type: 'resourceTimeline',
                         duration: { days: 10 },
-                        buttonText: '10 days'
+                        buttonText: '10 jours'
                     }
                 },
                 navLinks: true,
@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="container">
+                    <div class="container" style="max-width: 100% !important;">
                         <div id='calendar1'></div>
                     </div>
 
