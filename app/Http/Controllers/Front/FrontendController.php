@@ -52,6 +52,7 @@ class FrontendController extends Controller
         return  view('front.findCar', compact('cats', 'depart', 'retour', 'start_time', 'end_time', 'options', 'gurantees', 'start_point', 'end_point', 'days'));
     }
     public function booking(Request $request){
+        dd($request->vehicle_id);
 //        dd($request->all());
         $reservation = new Reservation();
         $reservation->start_point = $request->start_point;
