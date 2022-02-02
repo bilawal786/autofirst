@@ -96,7 +96,7 @@
                 resourceAreaHeaderContent: 'Véhicules',
                 resources: [
                     @foreach($reservations as $rese)
-                    { id: "{{$rese->id}}", title: "{{$rese->vehicle->marque->name??'Supreme'}} {{$rese->vehicle->modal->name??'Supreme'}} ({{$rese->vehicle->registration??'Supreme'}})" },
+                    { id: "{{$rese->id}}", title: "{{$rese->vehicle->marque->name??'Supreme'}} {{$rese->vehicle->modal->name??'Supreme'}} ({{$rese->vehicle->registration??'Supreme'}})", eventColor: "{{$rese->vehicle->color??''}}" },
                     @endforeach
                 ],
                 events: [
