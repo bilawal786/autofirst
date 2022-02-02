@@ -36,8 +36,7 @@
                                                         <h4 class="title fs-16"><a href="#" class="text-custom-black">{{$row->marque->name??'Not available'}} {{$row->modal->name??'Not available'}} ({{$row->registration??'Not available'}})<small class="text-light-dark">Par jour</small></a></h4>
                                                         <br>
                                                         <span class="price">{{$season->price}} €</span>
-                                                        <p><input name="vehicle_price" onclick="carselect(this)" id="abc{{$row->id}}" value="{{$season->price}}" type="radio" class="form-control"></p>
-                                                        <input type="hidden" name="vehicle_id" value="{{$row->id}}">
+                                                        <p><input name="vehicle_price" onclick="carselect(this)" id="abc{{$row->id}}" data-vehicle="{{$row->id}}" value="{{$season->price}}" type="radio" class="form-control"></p>
                                                         <div class="action">
                                                             <label style="width: 100%; height: 100%" for="abc{{$row->id}}">
                                                                 <a style="width: 100%" class="btn-first btn-submit yellow" >Sélectionnez ce véhicule</a>
@@ -51,6 +50,7 @@
                                 </div>
                                 @endforeach
                             @endforeach
+                                <input type="hidden" name="vehicle_id" class="vehicle_id" value="0">
                         </div>
                         <?php
                         $start_agency = \App\Agency::find($start_point);

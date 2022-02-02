@@ -226,12 +226,14 @@
     function carselect(elem){
         var rate_per_day =  elem.value;
         var days = $("#days").val();
+        var vehicle_id = $(elem).data('vehicle');
         var total = days *rate_per_day;
         var start_point =  $(".start_point").val();
         var end_point =  $(".end_point").val();
         $("#total").html((+total) + (+start_point)+ (+end_point));
         $("#totalamount").val((+total) + (+start_point)+ (+end_point));
         $("#rate_per_day").val(rate_per_day);
+        $(".vehicle_id").val(vehicle_id);
     }
     function addoptions(elem){
         var value =  elem.value;
