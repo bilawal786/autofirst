@@ -178,6 +178,7 @@
                                             </div>
                                         </div>
                                         <input type="hidden" id="days" name="days">
+                                        <input type="hidden" name="vehicle_id" value="" class="vehicle_id">
                                         <button class="btn btn-primary nextBtn btn-block pull-right" onclick="calc0()" type="button">Choisir un véhicule</button>
                                     </div>
                                 </div>

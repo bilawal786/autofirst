@@ -12,6 +12,7 @@ function carselect(elem){
     var rate_per_day =  elem.value;
     var days = $("#days").val();
     var total1 = days *rate_per_day;
+    var vehicle_id = $(elem).data('vehicle');
 
     $(".rate_per_day").val(rate_per_day);
     console.log("Rate per day of car: " + rate_per_day);
@@ -21,6 +22,7 @@ function carselect(elem){
     var finaltotal = (+total) + (+total1);
     $("#total").html(finaltotal);
     $("#totalamount").val(finaltotal);
+    $(".vehicle_id").val(vehicle_id);
 
 }
 
@@ -304,8 +306,8 @@ function calc0()
                                                         <img src="/`+item.vehicle_image+`" style="width:200px"></label>
                                                     <p><b>`+item.price+`</b> € / par jour</p>
                                                     <br>
-                                                    <input type="radio" id="`+item.vehicle_id+`" name="vehicle_price" value="`+item.price+`" style="height: 2em;" onclick="carselect(this)">
-                                                    <input type="hidden" name="vehicle_id" value="`+item.vehicle_id+`" style="height: 2em;">
+                                                    <input type="radio" id="`+item.vehicle_id+`" data-vehicle="`+item.vehicle_id+`" name="vehicle_price" value="`+item.price+`" style="height: 2em;" onclick="carselect(this)">
+
                                                 </div>`);
                       });
                   });
