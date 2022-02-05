@@ -17,6 +17,7 @@ use App\Vehicle;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 class FrontendController extends Controller
@@ -52,8 +53,15 @@ class FrontendController extends Controller
         return  view('front.findCar', compact('cats', 'depart', 'retour', 'start_time', 'end_time', 'options', 'gurantees', 'start_point', 'end_point', 'days'));
     }
     public function booking(Request $request){
-//        dd($request->vehicle_id);
 //        dd($request->all());
+        $getmonths= DB::table('reservations')
+            ->where('vehicle_id', $request->vehicle_id)
+            ->whereRaw('"'.$request->departure_date.'" between `departure_date` and `return_date`')
+            ->first();
+        if ($getmonths){
+            $request->session()->flash('alert-danger', 'Cette voiture n\'est pas disponible à ces dates.!');
+            return redirect()->route('front.index');
+        }
         $reservation = new Reservation();
         $reservation->start_point = $request->start_point;
         $reservation->end_point = $request->end_point;

@@ -13,7 +13,9 @@ use App\Option;
 use App\Reservation;
 use App\Season;
 use App\Vehicle;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 class ReservationController extends Controller
@@ -39,6 +41,17 @@ class ReservationController extends Controller
     }
     public function store(Request $request){
 //        dd($request->all());
+        $getmonths= DB::table('reservations')
+            ->where('vehicle_id', $request->vehicle_id)
+            ->whereRaw('"'.$request->date_depart.'" between `departure_date` and `return_date`')
+            ->first();
+        if ($getmonths){
+            $notification = array(
+                'messege' => 'Cette voiture n\'est pas disponible à ces dates.!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
        $reservation = new Reservation();
         $reservation->end_price = $request->end_price;
         $reservation->start_price = $request->start_price;

@@ -43,6 +43,16 @@
                                 <form method="POST" action="{{route('front.find.car')}}">
                                     @csrf
                                     <div class="row">
+                                        <div class="flash-message">
+                                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                                @if(Session::has('alert-' . $msg))
+
+                                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-4 col-md-6">
                                             <div class="form-group">
                                                 <label class="fs-14 text-custom-black fw-500">Agence de départ</label>
