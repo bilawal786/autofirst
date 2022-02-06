@@ -52,6 +52,7 @@ class ReservationController extends Controller
 //            );
 //            return redirect()->back()->with($notification);
 //        }
+
        $reservation = new Reservation();
         $reservation->end_price = $request->end_price;
         $reservation->start_price = $request->start_price;
