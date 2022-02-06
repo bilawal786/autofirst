@@ -54,14 +54,14 @@ class FrontendController extends Controller
     }
     public function booking(Request $request){
 //        dd($request->all());
-        $getmonths= DB::table('reservations')
-            ->where('vehicle_id', $request->vehicle_id)
-            ->whereRaw('"'.$request->departure_date.'" between `departure_date` and `return_date`')
-            ->first();
-        if ($getmonths){
-            $request->session()->flash('alert-danger', 'Cette voiture n\'est pas disponible à ces dates.!');
-            return redirect()->route('front.index');
-        }
+//        $getmonths= DB::table('reservations')
+//            ->where('vehicle_id', $request->vehicle_id)
+//            ->whereRaw('"'.$request->departure_date.'" between `departure_date` and `return_date`')
+//            ->first();
+//        if ($getmonths){
+//            $request->session()->flash('alert-danger', 'Cette voiture n\'est pas disponible à ces dates!');
+//            return redirect()->route('front.index');
+//        }
         $reservation = new Reservation();
         $reservation->start_point = $request->start_point;
         $reservation->end_point = $request->end_point;
