@@ -8,6 +8,7 @@ use App\Content;
 use App\Gurantee;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeasonResource;
+use App\Http\Resources\VehicleResource;
 use App\Mail\Facture;
 use App\Option;
 use App\Reservation;
@@ -35,8 +36,13 @@ class ReservationController extends Controller
         $depart = $request->date_depart;
         $retour = $request->date_retour;
         $season =  Season::where('start_date', '<', $depart)->where('end_date', '>', $retour)->pluck('category_id');
-        $cat = Category::whereIn('id', $season)->get();
-        $json = SeasonResource::collection($cat);
+        $ids= DB::table('reservations')
+            ->whereRaw('"'.$depart.'" between `departure_date` and `return_date`')
+            ->pluck('vehicle_id');
+        $v_ids = $ids->unique();
+        $cat = Category::whereIn('id', $season)->pluck('id');
+        $vehicles = Vehicle::whereNotIn('id', $v_ids)->whereIn('category', $cat)->get();
+        $json = VehicleResource::collection($vehicles);
         return response()->json($json);
     }
     public function store(Request $request){

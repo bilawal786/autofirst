@@ -298,8 +298,8 @@ function calc0()
                   alert("Oops ! Il n'y a pas de véhicule disponible en saison pour ces dates. Allez à la section Saison et prix pour ajouter la saison et le prix en premier.");
                   $('#loader').addClass('hidden');
               }else {
-                  $.each(response, function(i, item1) {
-                      $.each(item1.vehicle, function(i, item) {
+
+                  $.each(response, function(i, item) {
                           $('.responses').append(`<div class="cards">
                                                     <h2>`+item.vehicle_marque+`  `+item.vehicle_modal+` <b>(`+item.vehicle_number+`)</b></h2>
                                                     <label for="`+item.vehicle_id+`">
@@ -309,7 +309,6 @@ function calc0()
                                                     <input type="radio" id="`+item.vehicle_id+`" data-vehicle="`+item.vehicle_id+`" name="vehicle_price" value="`+item.price+`" style="height: 2em;" onclick="carselect(this)">
 
                                                 </div>`);
-                      });
                   });
               }
 

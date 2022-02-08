@@ -19,7 +19,14 @@
                         </div>
                         <div class="row">
                             @foreach($cats as $cat)
-                                @foreach($cat->vehicles as $row)
+                                @php
+                                $ids= DB::table('reservations')
+                                ->whereRaw('"'.$depart.'" between `departure_date` and `return_date`')
+                                  ->pluck('vehicle_id');
+                                $uni = $ids->unique();
+                                $vehicles = \App\Vehicle::whereNotIn('id', $uni)->where('category', $cat->id)->get();
+                                @endphp
+                                @foreach($vehicles as $row)
                                     <div class="col-md-6 col-xs-12 col-sm-12">
                                     <div class="row">
                                         @php
